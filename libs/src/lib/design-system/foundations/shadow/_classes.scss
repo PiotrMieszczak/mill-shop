@@ -1,0 +1,22 @@
+@use 'variables';
+@use 'mixins';
+
+.shadow-light {
+  @include mixins.shadow(variables.$shadow-light);
+}
+
+.shadow-medium {
+  @include mixins.shadow(variables.$shadow-medium);
+}
+
+.shadow-strong {
+  @include mixins.shadow(variables.$shadow-strong);
+}
+
+.shadow-hover {
+  @include mixins.shadow(variables.$shadow-hover);
+}
+
+.shadow-focus {
+  @include mixins.shadow(variables.$shadow-focus);
+}

@@ -1,0 +1,5 @@
+@use 'variables' as shadows;
+
+@mixin shadow($shadow-style: shadows.$shadow-medium) {
+  box-shadow: $shadow-style;
+}
