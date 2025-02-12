@@ -49,7 +49,7 @@ export const Colors: StoryFn = () => {
     
       return {
         template: `
-          <div class="palette">
+          <div class="colors-palette">
             <h1>Color Palette</h1>
             ${sectionsHtml}
           </div>

@@ -3,40 +3,44 @@
 
 .spacing-palette {
   padding: foundation.$space-6;
+
+  h1 {
+    @include mixins.font(h2, mobile);
+    color: foundation.$color-system-default;
+  }
+
+  .spacing-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: foundation.$color-system-negative;
+    border: 1px solid foundation.$color-system-negative;
+  }
+  
+  .spacing-table th,
+  .spacing-table td {
+    padding: foundation.$space-3;
+    border-bottom: 1px solid foundation.$color-neutral-3;
+  }
+  
+  .spacing-table th {
+    background-color: foundation.$color-system-default;
+    color: foundation.$color-system-negative;
+    font-weight: bold;
+  }
+  
+  .spacing-table tbody tr:hover {
+    background-color: foundation.$color-neutral-2;
+  }
+  
+  .spacing-box {
+    width: 40px;
+    height: 40px;
+    background-color: foundation.$color-secondary-4;
+    border: 1px solid foundation.$color-system-negative;
+  }
+  
 }
 
-h1 {
-  @include mixins.font(h2, mobile);
-  color: foundation.$color-system-default;
-}
 
-.spacing-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  background-color: foundation.$color-system-negative;
-  border: 1px solid foundation.$color-system-negative;
-}
 
-.spacing-table th,
-.spacing-table td {
-  padding: foundation.$space-3;
-  border-bottom: 1px solid foundation.$color-neutral-3;
-}
-
-.spacing-table th {
-  background-color: foundation.$color-system-default;
-  color: foundation.$color-system-negative;
-  font-weight: bold;
-}
-
-.spacing-table tbody tr:hover {
-  background-color: foundation.$color-neutral-2;
-}
-
-.spacing-box {
-  width: 40px;
-  height: 40px;
-  background-color: foundation.$color-secondary-4;
-  border: 1px solid foundation.$color-system-negative;
-}

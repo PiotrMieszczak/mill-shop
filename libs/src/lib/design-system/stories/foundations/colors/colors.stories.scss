@@ -1,11 +1,11 @@
 @use '../../../foundations/variables.scss' as foundation;
 @use '../../../foundations/mixins.scss' as mixins;
 
-.palette {
+.colors-palette {
   background-color: foundation.$color-system-default;
   padding: foundation.$space-6;
-}
 
+  
 h1 {
   @include mixins.font(h1, mobile);
   color: foundation.$color-system-negative;
@@ -52,4 +52,6 @@ h2 {
 .color-class {
   @include mixins.font(body2, desktop);
   color: foundation.$color-neutral-3;
+}
+
 }
