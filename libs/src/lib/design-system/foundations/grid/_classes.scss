@@ -1,0 +1,40 @@
+@use 'variables' as grid;
+@use '../breakpoints/mixins' as bp;
+
+$breakpoints: (
+  "d": desktop,
+  "m": mobile
+);
+
+/* Grid Container */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(grid.$grid-columns-desktop, 1fr);
+  gap: grid.$grid-gap;
+
+  @include bp.breakpoint-mobile {
+    grid-template-columns: repeat(grid.$grid-columns-mobile, 1fr);
+  }
+}
+
+/* Generate Column Classes for Each Breakpoint */
+@each $prefix, $breakpoint in $breakpoints {
+  @for $i from 1 through 12 {
+    .col-#{$prefix}-#{$i} {
+      @include bp.breakpoint-#{$breakpoint} {
+        grid-column: span min($i, grid.$grid-columns-desktop);
+      }
+    }
+  }
+}
+
+/* Generate Offset Classes */
+@each $prefix, $breakpoint in $breakpoints {
+  @for $i from 1 through 12 {
+    .offset-#{$prefix}-#{$i} {
+      @include bp.breakpoint-#{$breakpoint} {
+        margin-left: calc($i * (100% / grid.$grid-columns-desktop));
+      }
+    }
+  }
+}

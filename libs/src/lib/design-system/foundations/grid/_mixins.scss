@@ -1,0 +1,22 @@
+@use 'variables' as grid;
+@use '../breakpoints/mixins' as bp;
+
+@mixin grid-container {
+  display: grid;
+  grid-template-columns: repeat(grid.$grid-columns-desktop, 1fr);
+  gap: grid.$grid-gap;
+
+  @include bp.breakpoint-mobile {
+    grid-template-columns: repeat(grid.$grid-columns-mobile, 1fr);
+  }
+}
+
+@mixin grid-item($col-span, $offset: 0) {
+  grid-column: span $col-span;
+  margin-left: calc($offset * (100% / grid.$grid-columns-desktop));
+
+  @include bp.breakpoint-mobile {
+    grid-column: span min($col-span, grid.$grid-columns-mobile);
+    margin-left: calc($offset * (100% / grid.$grid-columns-mobile));
+  }
+}
