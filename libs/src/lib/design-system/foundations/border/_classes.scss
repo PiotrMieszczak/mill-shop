@@ -1,0 +1,11 @@
+@use 'variables';
+@use 'mixins';
+@use 'sass:meta' as meta;
+
+$border-colors: meta.module-variables(variables);
+
+@each $name, $color in $border-colors {
+  .border--#{$name} {
+    @include mixins.border($color);
+  }
+}
