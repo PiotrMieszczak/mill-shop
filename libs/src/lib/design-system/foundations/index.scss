@@ -1,7 +1,0 @@
-@forward 'colors';  /* Colors must be loaded first */
-@forward 'border';  /* Border depends on colors, so it comes after */
-@forward 'breakpoints';
-@forward 'grid';
-@forward 'shadow';
-@forward 'space';
-@forward 'typography';

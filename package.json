@@ -34,6 +34,7 @@
     "@nx/workspace": "20.4.2",
     "@schematics/angular": "~19.1.0",
     "@storybook/addon-essentials": "^8.4.6",
+    "@storybook/addon-styling-webpack": "^1.0.1",
     "@storybook/angular": "^8.4.6",
     "@storybook/core-server": "^8.4.6",
     "@swc-node/register": "~1.9.1",

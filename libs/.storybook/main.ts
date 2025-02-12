@@ -1,29 +1,33 @@
-import type { StorybookConfig } from '@storybook/angular';
-import * as path from 'path';
+import { StorybookConfig } from '@storybook/angular';
 
 const config: StorybookConfig = {
-  stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
+  stories: ['../src/lib/design-system/stories/**/*.stories.@(ts|tsx)'],
+  addons: [
+    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-styling-webpack',
+      options: {
+        rules: [
+          {
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              'css-loader',
+              {
+                loader: 'sass-loader',
+                options: {
+                  implementation: require('sass'),
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+  ],
   framework: {
     name: '@storybook/angular',
     options: {},
-  },
-
-  webpackFinal: async (config) => {
-    config.resolve = {
-      ...config.resolve,
-      alias: {
-        '@design-system': path.resolve(__dirname, '../src/lib/design-system'),
-      },
-    };
-
-    config.module?.rules?.push({
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../'),
-    });
-
-    return config;
   },
 };
 

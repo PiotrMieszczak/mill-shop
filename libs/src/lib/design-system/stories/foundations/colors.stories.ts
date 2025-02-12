@@ -1,5 +1,6 @@
 import { StoryFn, Meta } from '@storybook/angular';
 import { colorUtilities } from './colorUtils';
+import './colors.stories.scss';
 
 export default {
   title: 'Design System/Colors',
@@ -53,71 +54,5 @@ export const Colors: StoryFn = () => {
             ${sectionsHtml}
           </div>
         `,
-        styles: [
-          `
-            .palette {
-              font-family: Arial, sans-serif;
-              background: var(--system-default);
-              color: var(--system-negative);
-              padding: 32px;
-            }
-    
-            h1 {
-              font-size: 24px;
-              margin-bottom: 16px;
-             color: var(--system-negative);
-            }
-    
-            h2 {
-              font-size: 20px;
-              margin-bottom: 8px;
-          color: var(--system-negative);
-            }
-    
-            .color-row {
-              display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-              gap: 24px;
-              margin-bottom: 32px;
-              align-items: start;
-            }
-    
-            .color-item {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            }
-    
-            .color-box {
-              width: 120px;
-              height: 80px;
-             border: 1px solid var(--system-negative);
-            }
-    
-            .color-details {
-                display: flex;
-                flex-direction: column;
-                align-items: self-start;
-                gap: 6px
-          
-            }
-    
-            .color-label {
-              font-weight: bold;
-              display: block;
-              margin-top: 4px;
-               font-size: 16px;
-                 color: var(--system-negative);
-            }
-    
-            .color-value,
-            .color-class {
-              font-size: 12px;
-              color: var(--neutral-3);
-              display: block;
-            }
-          `,
-        ],
       };
 };
