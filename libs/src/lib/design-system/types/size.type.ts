@@ -1,0 +1,1 @@
+export type LibSize = 'small' | 'medium' | 'large';

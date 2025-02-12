@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { ButtonSize, ButtonType } from './button';
+import { ButtonType } from './button';
+import { LibSize } from '../../types';
 
 @Component({
   selector: 'lib-button',
@@ -14,5 +15,5 @@ export class ButtonComponent {
 
   @Input()
   @HostBinding('attr.data-size')
-  size: ButtonSize = 'medium';
+  size: LibSize = 'medium';
 }

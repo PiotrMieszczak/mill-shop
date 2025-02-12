@@ -1,0 +1,46 @@
+@use "../../foundations/colors/variables" as color;
+@use "../../foundations/space/variables" as space;
+@use "../../foundations/typography/variables" as font;
+
+:host {
+  display: inline-block;
+  text-decoration: none;
+  font-size: inherit;
+  padding: space.$space-1 space.$space-2;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &[data-type="default"] {
+    color: color.$neutral-5;
+    &:hover {
+      color: color.$primary-6;
+    }
+  }
+
+  &[data-type="black"] {
+    color: color.$neutral-5;
+    &:hover {
+      color: color.$system-default;
+    }
+  }
+
+  &[data-size="small"] {
+    font-size: font.$font-size-1;
+  }
+  
+  &[data-size="medium"] {
+    font-size: font.$font-size-3;
+  }
+  
+  &[data-size="large"] {
+    font-size: font.$font-size-5;
+  }
+
+  &[data-weight="regular"] {
+    font-weight: font.$weight-regular;
+  }
+  
+  &[data-weight="bold"] {
+    font-weight: font.$weight-bold;
+  }
+}

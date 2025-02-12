@@ -1,10 +1,11 @@
-import { Component, HostBinding, HostListener, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-clickbox',
   imports: [],
   templateUrl: './clickbox.component.html',
-  styleUrl: './clickbox.component.scss'
+  styleUrl: './clickbox.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClickboxComponent {
   @Input()
