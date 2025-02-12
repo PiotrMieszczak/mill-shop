@@ -1,0 +1,79 @@
+@use '../../../foundations/variables.scss' as foundation;
+@use '../../../foundations/mixins.scss' as mixins;
+
+/* Container */
+.typography-palette {
+  padding: foundation.$space-6;
+}
+
+/* ---------------------------
+   Tab Button Styles
+---------------------------- */
+.typography-tabs {
+  margin-bottom: foundation.$space-3;
+}
+
+.tab-button {
+  padding: foundation.$space-2 foundation.$space-4;
+  margin-right: foundation.$space-2;
+  border: none;
+  background-color: foundation.$color-neutral-3;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: foundation.$color-system-negative;
+}
+
+.tab-button.active {
+  background-color: foundation.$color-system-default;
+  font-weight: bold;
+  color: foundation.$color-system-negative;
+}
+
+/* ---------------------------
+   Conditional Visibility
+   Hide mobile-only elements when in desktop view,
+   and vice versa.
+---------------------------- */
+.typography-palette.mobile-view .desktop-only {
+  display: none;
+}
+
+.typography-palette.desktop-view .mobile-only {
+  display: none;
+}
+
+/* ---------------------------
+   Heading Style
+---------------------------- */
+h1 {
+  @include mixins.font(h2, mobile);
+  color: foundation.$color-system-default;
+}
+
+/* ---------------------------
+   Table Styles
+---------------------------- */
+.typography-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: foundation.$color-system-negative;
+  border: 1px solid foundation.$color-system-negative;
+}
+
+.typography-table th,
+.typography-table td {
+  padding: foundation.$space-3;
+  border-bottom: 1px solid foundation.$color-neutral-3;
+}
+
+.typography-table th {
+  background-color: foundation.$color-system-default;
+  color: foundation.$color-system-negative;
+  font-weight: bold;
+}
+
+.typography-table tbody tr:hover {
+  background-color: foundation.$color-neutral-2;
+}

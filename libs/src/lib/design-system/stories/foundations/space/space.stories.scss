@@ -15,7 +15,7 @@ h1 {
   border-collapse: collapse;
   text-align: left;
   background-color: foundation.$color-system-negative;
-  border: 1px solid foundation.$color-system-negative;;
+  border: 1px solid foundation.$color-system-negative;
 }
 
 .spacing-table th,
@@ -25,8 +25,8 @@ h1 {
 }
 
 .spacing-table th {
-  background-color: foundation.$color-neutral-2;
-  color: foundation.$color-system-default;
+  background-color: foundation.$color-system-default;
+  color: foundation.$color-system-negative;
   font-weight: bold;
 }
 

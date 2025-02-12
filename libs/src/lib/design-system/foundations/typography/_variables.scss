@@ -26,8 +26,8 @@
 $type-default: var(--font-type-default, sans-serif);
 
 // -- Font Weight --
-$font-weight-regular: var(--font-weight-regular);
-$font-weight-bold: var(--font-weight-bold);
+$weight-regular: var(--font-weight-regular);
+$weight-bold: var(--font-weight-bold);
 
 // -- Font Size --
 $font-size-1: var(--font-size-1);
@@ -78,11 +78,11 @@ $typography-scale: (
     desktop: (font-size: $font-size-7, line-height: $line-height-4),
   ),
   price1: (
+    mobile: (font-size: $font-size-7, line-height: $line-height-4),
+    desktop: (font-size: $font-size-8, line-height: $line-height-4),
+  ),
+  price2: (
     mobile: (font-size: $font-size-5, line-height: $line-height-3),
     desktop: (font-size: $font-size-6, line-height: $line-height-3),
   ),
-  price2: (
-    mobile: (font-size: $font-size-7, line-height: $line-height-4),
-    desktop: (font-size: $font-size-8, line-height: $line-height-4),
-  )
 );

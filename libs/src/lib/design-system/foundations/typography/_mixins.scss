@@ -11,4 +11,10 @@
         line-height: map-get(map-get($typography-scale, $type), $breakpoint, line-height);
     }
 }
-  
+
+@mixin regular {
+  font-weight: variables.$weight-regular;
+}
+@mixin bold {
+  font-weight: variables.$weight-bold;
+}
