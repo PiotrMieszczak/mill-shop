@@ -41,5 +41,10 @@ export enum ColorVariable {
     BorderError = '--border--error',
     BorderDisabled = '--border--disabled',
     BorderHighlighted = '--border--highlighted',
+
+    SystemDefault = '--system-default',
+    SystemNegative = '--system-negative',
+    SystemBackground = '--system-background',
+    SystemLink = '--system-link'
   }
   

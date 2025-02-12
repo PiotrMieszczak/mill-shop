@@ -40,6 +40,11 @@
     --border--error: inset 0 0 0 2px var(--error);
     --border--disabled: inset 0 0 0 2px var(--neutral-3);
     --border--highlighted: inset 0 0 0 2px var(--secondary-3);
+
+    --system-default: #0a0a0a;
+    --system-negative: #fff;
+    --system-background: #fff;
+    --system-link: var(--primary-7);
 }
   
 /* SCSS Variables */
@@ -71,3 +76,8 @@ $success: var(--success);
 $warning: var(--warning);
 $error: var(--error);
 $info: var(--info);
+
+$system-default: var(--system-default);
+$system-negative: var(--system-negative);
+$system-background: var(--system-background);
+$system-link: var(--system-link);
