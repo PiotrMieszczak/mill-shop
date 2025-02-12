@@ -1,11 +1,9 @@
+$grid-columns-desktop: 12;
+$grid-columns-mobile: 4;
+$grid-gap: 1rem;
+
 :root {
-    --grid-columns-desktop: 12;
-    --grid-columns-mobile: 4;
-    --grid-gap: 1rem; /* 16px spacing between columns */
-  }
-  
-  /* SCSS Variables */
-  $grid-columns-desktop: var(--grid-columns-desktop);
-  $grid-columns-mobile: var(--grid-columns-mobile);
-  $grid-gap: var(--grid-gap);
-  
+  --grid-columns-desktop: #{$grid-columns-desktop};
+  --grid-columns-mobile: #{$grid-columns-mobile};
+  --grid-gap: #{$grid-gap};
+}

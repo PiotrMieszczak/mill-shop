@@ -1,10 +1,11 @@
 @use '../colors/variables' as color;
 
 /* SCSS Variables (Referencing Colors) */
-$border--default: color.$border--default;
-$border--hover: color.$border--hover;
-$border--focus: color.$border--focus;
-$border--active: color.$border--active;
-$border--error: color.$border--error;
-$border--disabled: color.$border--disabled;
-$border--highlighted: color.$border--highlighted;
+$border--none: var(--border--none);
+$border--default: var(--border--default);
+$border--hover: var(--border--hover);
+$border--focus: var(--border--focus);
+$border--active: var(--border--active);
+$border--error: var(--border--error);
+$border--disabled: var(--border--disabled);
+$border--highlighted: var(--border--highlighted);

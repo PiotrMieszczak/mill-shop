@@ -1,5 +1,5 @@
 @use 'variables' as variables;
-@use '../shadows/variables' as shadows;
+@use '../shadow/variables' as shadows;
 
 @mixin border($border-color: variables.$border--default, $shadow: shadows.$shadow-light, $important: '') {
   position: relative;

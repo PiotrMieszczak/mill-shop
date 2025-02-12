@@ -7,7 +7,7 @@
     --primary-5: #42a5f5;
     --primary-6: #2196f3;
     --primary-7: #1e88e5;
-  
+
     /* Secondary Colors */
     --secondary-1: #e0f2f1;  
     --secondary-2: #b2dfdb;
@@ -26,7 +26,7 @@
     --neutral-6: #616161;
     --neutral-7: #424242;
     --neutral-8: #212121;
-  
+
     /* Status Colors */
     --success: #4caf50;
     --warning: #ff9800;
@@ -40,35 +40,34 @@
     --border--error: inset 0 0 0 2px var(--error);
     --border--disabled: inset 0 0 0 2px var(--neutral-3);
     --border--highlighted: inset 0 0 0 2px var(--secondary-3);
-  }
+}
   
-  /* SCSS Variables */
-  $primary-1: var(--primary-1);
-  $primary-2: var(--primary-2);
-  $primary-3: var(--primary-3);
-  $primary-4: var(--primary-4);
-  $primary-5: var(--primary-5);
-  $primary-6: var(--primary-6);
-  $primary-7: var(--primary-7);
-  
-  $secondary-1: var(--secondary-1);
-  $secondary-2: var(--secondary-2);
-  $secondary-3: var(--secondary-3);
-  $secondary-4: var(--secondary-4);
-  $secondary-5: var(--secondary-5);
-  $secondary-6: var(--secondary-6);
-  
-  $neutral-1: var(--neutral-1);
-  $neutral-2: var(--neutral-2);
-  $neutral-3: var(--neutral-3);
-  $neutral-4: var(--neutral-4);
-  $neutral-5: var(--neutral-5);
-  $neutral-6: var(--neutral-6);
-  $neutral-7: var(--neutral-7);
-  $neutral-8: var(--neutral-8);
-  
-  $success: var(--success);
-  $warning: var(--warning);
-  $error: var(--error);
-  $info: var(--info);
-  
+/* SCSS Variables */
+$primary-1: var(--primary-1);
+$primary-2: var(--primary-2);
+$primary-3: var(--primary-3);
+$primary-4: var(--primary-4);
+$primary-5: var(--primary-5);
+$primary-6: var(--primary-6);
+$primary-7: var(--primary-7);
+
+$secondary-1: var(--secondary-1);
+$secondary-2: var(--secondary-2);
+$secondary-3: var(--secondary-3);
+$secondary-4: var(--secondary-4);
+$secondary-5: var(--secondary-5);
+$secondary-6: var(--secondary-6);
+
+$neutral-1: var(--neutral-1);
+$neutral-2: var(--neutral-2);
+$neutral-3: var(--neutral-3);
+$neutral-4: var(--neutral-4);
+$neutral-5: var(--neutral-5);
+$neutral-6: var(--neutral-6);
+$neutral-7: var(--neutral-7);
+$neutral-8: var(--neutral-8);
+
+$success: var(--success);
+$warning: var(--warning);
+$error: var(--error);
+$info: var(--info);
