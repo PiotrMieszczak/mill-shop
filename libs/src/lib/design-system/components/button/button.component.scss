@@ -1,0 +1,71 @@
+:host {
+    display: inline-block;
+
+
+
+}
+  
+  .lib-button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--space-1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+
+  :host([data-type="primary"]) button {
+    background-color: var(--primary-6);
+    color: var(--system-negative);
+    border: var(--border--default);
+  }
+  
+  :host([data-type="primary"]):hover button {
+    border: var(--border--hover);
+  }
+  
+  :host([data-type="secondary"]) button {
+    background-color: var(--secondary-6);
+    color: var(--system-negative);
+    border: var(--border--default);
+  }
+  
+  :host([data-type="secondary"]):hover button {
+    border: var(--border--hover);
+  }
+  
+  :host([data-type="success"]) button {
+    background-color: var(--success);
+    color: var(--system-negative);
+    border: var(--border--default);
+  }
+  
+  :host([data-type="success"]):hover button {
+    border: var(--border--hover);
+  }
+  
+  :host([data-type="error"]) button {
+    background-color: var(--error);
+    color: var(--system-negative);
+    border: var(--border--default);
+  }
+  
+  :host([data-type="error"]):hover button {
+    border: var(--border--hover);
+  }
+
+  :host([data-size="small"]) button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  :host([data-size="medium"]) button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  :host([data-size="large"]) button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+  }
+  
