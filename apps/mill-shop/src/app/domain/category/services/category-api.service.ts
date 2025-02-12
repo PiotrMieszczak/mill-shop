@@ -29,7 +29,7 @@ export class CategoryApiService {
   
     getCategories(): Observable<Category[]> {
       return this.graphql
-        .query<{ categories: CategoryDTO[] }>(GET_CATEGORIES)
+        .query<{ categories: CategoryDTO[]}>(GET_CATEGORIES, {fetchPolicy: 'cache-first'})
         .pipe(map((data) => data.categories.map(CategoryAdapter.createCategory)));
     }
   }

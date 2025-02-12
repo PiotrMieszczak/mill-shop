@@ -1,7 +1,6 @@
 <h1>Categories</h1>
-    <ul>
-      <li *ngFor="let category of categories$ | async">
-       
-        {{category.name}}
-      </li>
-    </ul>
+<ul>
+  <li *ngFor="let category of categoriesSignal()">
+    {{ category.name }}
+  </li>
+</ul>

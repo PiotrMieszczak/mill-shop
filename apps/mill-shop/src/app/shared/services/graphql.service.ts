@@ -6,6 +6,7 @@ import { DocumentNode, WatchQueryOptions, OperationVariables } from '@apollo/cli
 
 @Injectable({ providedIn: 'root' })
 export class GraphqlService {
+  [x: string]: any;
   constructor(private apollo: Apollo) {}
 
   query<T, V extends OperationVariables = OperationVariables>(
