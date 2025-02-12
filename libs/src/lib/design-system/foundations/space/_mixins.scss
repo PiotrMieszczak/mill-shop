@@ -1,0 +1,5 @@
+@use 'variables' as spacing;
+
+@mixin spacing($property, $size) {
+  #{$property}: $size;
+}
