@@ -1,9 +1,9 @@
 import { StoryFn, Meta } from '@storybook/angular';
-import { colorUtilities } from './colorUtils';
+import { colorUtilities } from './color.utils';
 import './colors.stories.scss';
 
 export default {
-  title: 'Design System/Colors',
+  title: 'Foundation/Colors',
 } as Meta;
 
 export const Colors: StoryFn = () => {

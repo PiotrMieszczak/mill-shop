@@ -1,5 +1,5 @@
-@use '../../foundations/variables.scss' as foundation;
-@use '../../foundations/mixins.scss' as mixins;
+@use '../../../foundations/variables.scss' as foundation;
+@use '../../../foundations/mixins.scss' as mixins;
 
 .palette {
   background-color: foundation.$color-system-default;
