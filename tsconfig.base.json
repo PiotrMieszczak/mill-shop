@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@mill-shop/design-system": ["libs/src/index.ts"]
-    }
+    },
+    "types": ["@commitlint/types"]
   },
   "exclude": ["node_modules", "tmp"]
 }
