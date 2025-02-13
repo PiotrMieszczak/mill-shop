@@ -1,4 +1,4 @@
-import { inject, Injectable, computed, signal } from '@angular/core';
+import { inject, Injectable, computed } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CategoryApiService } from '../services/category-api.service';
 import { Category } from '../../../shared/interfaces/category.interface';

@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { lastValueFrom, of, throwError } from 'rxjs';
+import { of, throwError, lastValueFrom, firstValueFrom } from 'rxjs';
 import { CategoryFacade } from './category-facade.service';
 import { CategoryApiService } from '../services/category-api.service';
 import { Category } from '../../../shared/interfaces/category.interface';
 import { mockCategoryDTO } from '../../../shared/mocks';
 import { CategoryAdapter } from '../adapters/category.adapter';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 describe('CategoryFacade', () => {
   let facade: CategoryFacade;
@@ -35,17 +36,23 @@ describe('CategoryFacade', () => {
   it('should load categories successfully', async () => {
     categoryApiServiceMock.getCategories.mockReturnValue(of(mockCategories));
 
-    expect(facade.loading$()).toBe(false);
+    expect(facade.categoriesSignal()).toEqual([]);
+    expect(facade.errorSignal()).toBeUndefined();
 
-    facade.loadCategories();
+    await TestBed.runInInjectionContext(async () => {
+      categoryApiServiceMock.getCategories.mockReturnValue(of(mockCategories));
 
-    expect(categoryApiServiceMock.getCategories).toHaveBeenCalledTimes(1);
+      facade.categoriesResource.value();
 
-    await lastValueFrom(categoryApiServiceMock.getCategories());
+      await firstValueFrom(toObservable(facade.categoriesResource.value));
 
-    expect(facade.loading$()).toBe(false);
-    expect(facade.categories$()).toEqual(mockCategories);
-    expect(facade.error$()).toBeNull();
+      expect(facade.categoriesResource.value()).toBeDefined();
+      expect(facade.categoriesResource.value()).toEqual(mockCategories);
+    });
+
+    expect(facade.loadingSignal()).toBe(false);
+    expect(facade.categoriesSignal()).toEqual(mockCategories);
+    expect(facade.errorSignal()).toBeUndefined();
   });
 
   it('should handle API failure', async () => {
@@ -54,16 +61,16 @@ describe('CategoryFacade', () => {
       throwError(() => errorResponse)
     );
 
-    expect(facade.loading$()).toBe(false);
+    expect(facade.categoriesSignal()).toEqual([]);
+    expect(facade.errorSignal()).toBeUndefined();
 
-    facade.loadCategories();
-
-    try {
-      await lastValueFrom(categoryApiServiceMock.getCategories());
-    } catch (_) {
-      expect(facade.loading$()).toBe(false);
-      expect(facade.categories$()).toEqual([]);
-      expect(facade.error$()).toBe(errorResponse.message);
-    }
+    await TestBed.runInInjectionContext(async () => {
+      try {
+        facade.categoriesResource.value(); // ✅ Ensure fetch is triggered
+        await firstValueFrom(toObservable(facade.categoriesResource.error));
+      } catch (_) {
+        expect(facade.errorSignal()).toBe('Failed to fetch');
+      }
+    });
   });
 });

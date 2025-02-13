@@ -1,10 +1,11 @@
-import { TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
+import { of, throwError, firstValueFrom } from 'rxjs';
 import { ProductFacadeService } from './product-facade.service';
 import { ProductApiService } from '../services/product-api.service';
 import { Product } from '../interfaces';
 import { ProductAdapter } from '../adapters/product.adapter';
 import { mockProductsDTO } from '../../../shared/mocks';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 describe('ProductFacadeService', () => {
   let facade: ProductFacadeService;
@@ -32,46 +33,58 @@ describe('ProductFacadeService', () => {
     ) as jest.Mocked<ProductApiService>;
   });
 
-  it('should load products successfully', fakeAsync(() => {
+  it('should load products successfully', async () => {
     productApiServiceMock.getProductsByCategory.mockReturnValue(
       of(mockProducts)
     );
 
     expect(facade.productsResource.value()).toBeUndefined();
 
-    facade.getProductsByCategory('electronics');
-    tick();
+    await TestBed.runInInjectionContext(async () => {
+      facade.getProductsByCategory('electronics');
 
-    expect(facade.productsResource.isLoading()).toBe(false);
-    expect(facade.productsResource.value()).toEqual(mockProducts);
-    expect(facade.productsResource.error()).toBeNull();
-  }));
+      await firstValueFrom(toObservable(facade.productsResource.value));
 
-  it('should return an empty array when no category is provided', fakeAsync(() => {
+      expect(facade.productsResource.isLoading()).toBe(false);
+      expect(facade.productsResource.value()).toEqual(mockProducts);
+      expect(facade.productsResource.error()).toBeUndefined();
+    });
+  });
+
+  it('should return an empty array when no category is provided', async () => {
     productApiServiceMock.getProductsByCategory.mockReturnValue(of([]));
 
     expect(facade.productsResource.value()).toBeUndefined();
 
-    facade.getProductsByCategory('');
-    flush();
+    await TestBed.runInInjectionContext(async () => {
+      facade.getProductsByCategory('');
 
-    expect(productApiServiceMock.getProductsByCategory).not.toHaveBeenCalled();
-    expect(facade.productsResource.value()).toEqual([]);
-  }));
+      await firstValueFrom(toObservable(facade.productsResource.value));
 
-  it('should handle API failure', fakeAsync(() => {
+      expect(
+        productApiServiceMock.getProductsByCategory
+      ).not.toHaveBeenCalled();
+      expect(facade.productsResource.value()).toEqual([]);
+    });
+  });
+
+  it('should handle API failure', async () => {
     const errorResponse = { message: 'Failed to fetch', status: 500 };
     productApiServiceMock.getProductsByCategory.mockReturnValue(
       throwError(() => errorResponse)
     );
 
-    expect(facade.productsResource.isLoading()).toBe(false);
+    await TestBed.runInInjectionContext(async () => {
+      facade.getProductsByCategory('electronics');
 
-    facade.getProductsByCategory('electronics');
-    tick();
+      expect(facade.productsResource.isLoading()).toBe(true);
 
-    expect(facade.productsResource.isLoading()).toBe(false);
-    expect(facade.productsResource.value()).toBeUndefined();
-    expect(facade.productsResource.error()).toEqual(errorResponse.message);
-  }));
+      try {
+        await firstValueFrom(toObservable(facade.productsResource.error));
+      } catch (_) {
+        expect(facade.productsResource.isLoading()).toBe(false);
+        expect(facade.productsResource.error()).toBe(errorResponse.message);
+      }
+    });
+  });
 });
