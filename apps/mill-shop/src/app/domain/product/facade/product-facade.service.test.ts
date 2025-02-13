@@ -1,5 +1,5 @@
-import { TestBed } from '@angular/core/testing';
-import { lastValueFrom, of, throwError } from 'rxjs';
+import { TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
+import { of, throwError } from 'rxjs';
 import { ProductFacadeService } from './product-facade.service';
 import { ProductApiService } from '../services/product-api.service';
 import { Product } from '../interfaces';
@@ -32,49 +32,46 @@ describe('ProductFacadeService', () => {
     ) as jest.Mocked<ProductApiService>;
   });
 
-  it('should load products successfully', async () => {
+  it('should load products successfully', fakeAsync(() => {
     productApiServiceMock.getProductsByCategory.mockReturnValue(
       of(mockProducts)
     );
 
-    expect(facade.loading$()).toBe(false);
+    expect(facade.productsResource.value()).toBeUndefined();
 
     facade.getProductsByCategory('electronics');
+    tick();
 
-    expect(productApiServiceMock.getProductsByCategory).toHaveBeenCalledTimes(
-      1
-    );
-    expect(productApiServiceMock.getProductsByCategory).toHaveBeenCalledWith(
-      'electronics'
-    );
+    expect(facade.productsResource.isLoading()).toBe(false);
+    expect(facade.productsResource.value()).toEqual(mockProducts);
+    expect(facade.productsResource.error()).toBeNull();
+  }));
 
-    await lastValueFrom(
-      productApiServiceMock.getProductsByCategory('electronics')
-    );
+  it('should return an empty array when no category is provided', fakeAsync(() => {
+    productApiServiceMock.getProductsByCategory.mockReturnValue(of([]));
 
-    expect(facade.loading$()).toBe(false);
-    expect(facade.products$()).toEqual(mockProducts);
-    expect(facade.error$()).toBeNull();
-  });
+    expect(facade.productsResource.value()).toBeUndefined();
 
-  it('should handle API failure', async () => {
+    facade.getProductsByCategory('');
+    flush();
+
+    expect(productApiServiceMock.getProductsByCategory).not.toHaveBeenCalled();
+    expect(facade.productsResource.value()).toEqual([]);
+  }));
+
+  it('should handle API failure', fakeAsync(() => {
     const errorResponse = { message: 'Failed to fetch', status: 500 };
     productApiServiceMock.getProductsByCategory.mockReturnValue(
       throwError(() => errorResponse)
     );
 
-    expect(facade.loading$()).toBe(false);
+    expect(facade.productsResource.isLoading()).toBe(false);
 
     facade.getProductsByCategory('electronics');
+    tick();
 
-    try {
-      await lastValueFrom(
-        productApiServiceMock.getProductsByCategory('electronics')
-      );
-    } catch (_) {
-      expect(facade.loading$()).toBe(false);
-      expect(facade.products$()).toEqual([]);
-      expect(facade.error$()).toBe(errorResponse.message);
-    }
-  });
+    expect(facade.productsResource.isLoading()).toBe(false);
+    expect(facade.productsResource.value()).toBeUndefined();
+    expect(facade.productsResource.error()).toEqual(errorResponse.message);
+  }));
 });

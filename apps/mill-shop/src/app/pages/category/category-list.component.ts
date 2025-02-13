@@ -1,5 +1,5 @@
 import { NgForOf } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { CategoryFacade } from '../../domain/category/facade';
 import { RouterModule } from '@angular/router';
 
@@ -10,12 +10,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './category-list.component.html',
 })
 export class CategoryListComponent implements OnInit {
-  categoryFacade = inject(CategoryFacade);
-  categoriesSignal = this.categoryFacade.categories$;
-  loadingSignal = this.categoryFacade.loading$;
-  errorSignal = this.categoryFacade.error$;
+  private categoryFacade = inject(CategoryFacade);
 
-  ngOnInit() {
+  categoriesResource = this.categoryFacade.categoriesResource;
+  categoriesSignal = computed(() => this.categoriesResource.value() || []);
+  loadingSignal = computed(() => this.categoriesResource.isLoading());
+  errorSignal = computed(() => this.categoriesResource.error());
+
+  ngOnInit(): void {
     this.categoryFacade.loadCategories();
   }
 }
