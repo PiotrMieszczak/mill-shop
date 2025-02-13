@@ -2,12 +2,12 @@ import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 
 import { CategoryApiService } from '../services/category-api.service';
 import { Category } from '../interfaces/category.interface';
-import { map } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 
 export type FailureError = {
-    message: string;
-    status: number;
-  };
+  message: string;
+  status: number;
+};
 
 @Injectable({ providedIn: 'root' })
 export class CategoryFacade {
@@ -21,26 +21,18 @@ export class CategoryFacade {
   error$ = this.errorSignal;
 
   public loadCategories() {
-    this.loadingSignal.set(true);
-    this.categoryApiService.getCategories().subscribe({
-      next: (categories) => {
-        this.categoriesSignal.set(categories);
-        this.loadingSignal.set(false);
-      },
-      error: (error) => {
-        this.errorSignal.set(error.message);
-        this.loadingSignal.set(false);
-      },
-    });
+    this.categoryApiService
+      .getCategories()
+      .pipe(tap(() => this.loadingSignal.set(true)))
+      .subscribe({
+        next: (categories) => {
+          this.categoriesSignal.set(categories);
+          this.loadingSignal.set(false);
+        },
+        error: (error) => {
+          this.errorSignal.set(error.message);
+          this.loadingSignal.set(false);
+        },
+      });
   }
-
-//   public loadCategoriesList(): void {
-//     this.loadingSignal.set(true);
-//     this.categoryApiService.getCategories().pipe(
-//         map((categories) => {
-//             this.categoriesSignal.set(categories);
-//             this.loadingSignal.set(false);
-//         }),
-//     ).subscribe();
-//   }
 }
