@@ -2,24 +2,17 @@ import { TestBed } from '@angular/core/testing';
 import { lastValueFrom, of, throwError } from 'rxjs';
 import { CategoryFacade } from './category-facade.service';
 import { CategoryApiService } from '../services/category-api.service';
-import { Category } from '../interfaces/category.interface';
+import { Category } from '../../../shared/interfaces/category.interface';
+import { mockCategoryDTO } from '../../../shared/mocks';
+import { CategoryAdapter } from '../adapters/category.adapter';
 
 describe('CategoryFacade', () => {
   let facade: CategoryFacade;
   let categoryApiServiceMock: jest.Mocked<CategoryApiService>;
 
-  const mockCategories: Category[] = [
-    {
-      name: 'Electronics',
-      slug: 'electronics',
-      image: { url: 'image-url-1', fileName: 'image1.jpg' },
-    },
-    {
-      name: 'Books',
-      slug: 'books',
-      image: { url: 'image-url-2', fileName: 'image2.jpg' },
-    },
-  ];
+  const mockCategories: Category[] = mockCategoryDTO.map(
+    CategoryAdapter.createCategory
+  );
 
   beforeEach(() => {
     const mockCategoryApiService = {

@@ -1,8 +1,8 @@
 import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 
 import { CategoryApiService } from '../services/category-api.service';
-import { Category } from '../interfaces/category.interface';
-import { take, tap } from 'rxjs/operators';
+import { Category } from '../../../shared/interfaces/category.interface';
+import { tap } from 'rxjs/operators';
 
 export type FailureError = {
   message: string;
