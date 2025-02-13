@@ -13,15 +13,10 @@ export class ProductApiService {
 
   getProductsByCategory(slug: string): Observable<Product[]> {
     return this.graphql
-      .query<{ category: { products: ProductDTO[] } }>(
-        GET_PRODUCTS_BY_CATEGORY,
-        { slug }
-      )
-      .pipe(
-        map(
-          (data) =>
-            data.category?.products?.map(ProductAdapter.createProduct) || []
-        )
-      );
+      .query<{ products: ProductDTO[] }>(GET_PRODUCTS_BY_CATEGORY, {
+        slug,
+        fetchPolicy: 'cache-first',
+      })
+      .pipe(map((data) => data.products.map(ProductAdapter.createProduct)));
   }
 }

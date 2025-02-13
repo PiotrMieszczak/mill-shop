@@ -20,7 +20,7 @@ export class CategoryFacade {
   loading$ = this.loadingSignal;
   error$ = this.errorSignal;
 
-  public loadCategories() {
+  public loadCategories(): void {
     this.categoryApiService
       .getCategories()
       .pipe(tap(() => this.loadingSignal.set(true)))

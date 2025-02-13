@@ -1,6 +1,8 @@
 <h1>Categories</h1>
 <ul>
   <li *ngFor="let category of categoriesSignal()">
-    {{ category.name }}
+    <a [routerLink]="['/category', category.slug]">
+      {{ category.name }}
+    </a>
   </li>
 </ul>

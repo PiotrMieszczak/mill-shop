@@ -34,14 +34,12 @@ describe('ProductApiService', () => {
   });
 
   it('should fetch products by category successfully', (done) => {
-    graphqlServiceMock.query.mockReturnValue(
-      of({ category: { products: mockProductsDTO } })
-    );
+    graphqlServiceMock.query.mockReturnValue(of({ products: mockProductsDTO }));
 
     service.getProductsByCategory('electronics').subscribe((products) => {
       expect(graphqlServiceMock.query).toHaveBeenCalledWith(
         GET_PRODUCTS_BY_CATEGORY,
-        { slug: 'electronics' }
+        { slug: 'electronics', fetchPolicy: 'cache-first' }
       );
       expect(products).toEqual(mockProducts);
       done();
@@ -49,14 +47,12 @@ describe('ProductApiService', () => {
   });
 
   it('should return an empty array if no products exist', (done) => {
-    graphqlServiceMock.query.mockReturnValue(
-      of({ category: { products: [] } })
-    );
+    graphqlServiceMock.query.mockReturnValue(of({ products: [] }));
 
     service.getProductsByCategory('unknown-category').subscribe((products) => {
       expect(graphqlServiceMock.query).toHaveBeenCalledWith(
         GET_PRODUCTS_BY_CATEGORY,
-        { slug: 'unknown-category' }
+        { slug: 'unknown-category', fetchPolicy: 'cache-first' }
       );
       expect(products).toEqual([]);
       done();

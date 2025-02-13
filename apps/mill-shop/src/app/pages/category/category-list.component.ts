@@ -1,12 +1,13 @@
 import { NgForOf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { CategoryFacade } from '../../domain/category/facade';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [NgForOf], 
-  templateUrl: './category-list.component.html'
+  imports: [NgForOf, RouterModule],
+  templateUrl: './category-list.component.html',
 })
 export class CategoryListComponent implements OnInit {
   categoryFacade = inject(CategoryFacade);
@@ -14,8 +15,7 @@ export class CategoryListComponent implements OnInit {
   loadingSignal = this.categoryFacade.loading$;
   errorSignal = this.categoryFacade.error$;
 
-
   ngOnInit() {
-    this.categoryFacade.loadCategories()
+    this.categoryFacade.loadCategories();
   }
 }

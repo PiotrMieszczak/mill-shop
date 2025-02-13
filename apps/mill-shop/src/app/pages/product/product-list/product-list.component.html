@@ -1,0 +1,5 @@
+@if(categorySignal() ) { Products in {{ categorySignal()?.name }}
+} @if(loadingSignal() ) { loading } @if(errorSignal() ) { error } @for (product
+of productsSignal(); track product) {
+{{ product.name }}
+}

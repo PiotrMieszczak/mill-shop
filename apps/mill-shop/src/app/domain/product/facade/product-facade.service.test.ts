@@ -39,7 +39,7 @@ describe('ProductFacadeService', () => {
 
     expect(facade.loading$()).toBe(false);
 
-    facade.getProductsByCategory('electronics').subscribe();
+    facade.getProductsByCategory('electronics');
 
     expect(productApiServiceMock.getProductsByCategory).toHaveBeenCalledTimes(
       1
@@ -65,13 +65,7 @@ describe('ProductFacadeService', () => {
 
     expect(facade.loading$()).toBe(false);
 
-    facade.getProductsByCategory('electronics').subscribe({
-      error: () => {
-        expect(facade.loading$()).toBe(false);
-        expect(facade.products$()).toEqual([]);
-        expect(facade.error$()).toBe(errorResponse.message);
-      },
-    });
+    facade.getProductsByCategory('electronics');
 
     try {
       await lastValueFrom(
