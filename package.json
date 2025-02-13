@@ -4,7 +4,12 @@
   "license": "MIT",
   "scripts": {
     "commit": "npx git-cz",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "nx run-many --target=test",
+    "test:watch": "nx run-many --target=test --watch",
+    "test:mill-shop": "nx test mill-shop",
+    "test:mill-shop:watch": "nx test mill-shop --watch",
+    "serve": "nx serve mill-shop"
   },
   "private": true,
   "config": {
