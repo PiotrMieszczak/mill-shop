@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
+import { CountdownTimerComponent } from './components/countdown-timer.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   templateUrl: './product-details.component.html',
-  imports: [RouterModule],
+  imports: [RouterModule, CountdownTimerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent implements OnInit {

@@ -1,0 +1,19 @@
+<div class="countdown-timer">
+  <h2>Time Left Until Midnight</h2>
+  <div class="timer-display">
+    <span class="time-box">
+      {{ countdownSignal().hours }}
+      <small>H</small>
+    </span>
+    <span class="separator">:</span>
+    <span class="time-box">
+      {{ countdownSignal().minutes }}
+      <small>M</small>
+    </span>
+    <span class="separator">:</span>
+    <span class="time-box">
+      {{ countdownSignal().seconds }}
+      <small>S</small>
+    </span>
+  </div>
+</div>
