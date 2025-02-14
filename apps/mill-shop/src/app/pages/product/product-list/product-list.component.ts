@@ -1,27 +1,26 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
   templateUrl: './product-list.component.html',
+  imports: [RouterModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {
   private productFacade = inject(ProductFacadeService);
   private route = inject(ActivatedRoute);
 
+  categorySlug = signal('');
   productsSignal = this.productFacade.productsSignal;
-  loadingSignal = this.productFacade.loadingSignal;
-  errorSignal = this.productFacade.errorSignal;
+  loadingSignal = this.productFacade.isLoadingSignal;
+  errorSignal = this.productFacade.hasErrorSignal;
   categorySignal = this.productFacade.categorySignal;
 
   ngOnInit(): void {
-    this.route.paramMap
-      .pipe(map((params) => params.get('slug') || ''))
-      .subscribe((slug) => {
-        this.productFacade.getProductsByCategory(slug);
-      });
+    this.categorySlug.set(this.route.snapshot.paramMap.get('slug') ?? '');
+    this.productFacade.getProductsByCategory(this.categorySlug());
   }
 }

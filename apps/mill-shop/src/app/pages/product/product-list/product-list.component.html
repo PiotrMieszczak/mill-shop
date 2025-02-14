@@ -1,5 +1,11 @@
-@if(categorySignal() ) { Products in {{ categorySignal()?.name }}
-} @if(loadingSignal() ) { loading } @if(errorSignal() ) { error } @for (product
-of productsSignal(); track product) {
-{{ product.name }}
+@if(categorySignal()) {
+<h2>Products in {{ categorySignal()?.name }}</h2>
+} @if(loadingSignal()) {
+<p>Loading...</p>
+} @if(errorSignal()) {
+<p>Error</p>
+} @for (product of productsSignal(); track product) {
+<a [routerLink]="['/category', categorySignal()?.slug, 'product', product.slug]">
+  {{ product.name }}
+</a>
 }

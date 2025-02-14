@@ -21,22 +21,40 @@ export const GET_PRODUCTS_BY_CATEGORY = gql`
 `;
 
 export const GET_PRODUCT_DETAILS = gql`
-  query getProductDetails($categorySlug: String!, $productSlug: String!) {
-    product(categorySlug: $categorySlug, slug: $productSlug) {
+  query getProductDetails($productSlug: String!) {
+    product(where: { slug: $productSlug }) {
+      id
+      slug
       name
-      image
       description
       price
+      image {
+        url
+        fileName
+      }
+      category {
+        slug
+        name
+      }
     }
   }
 `;
 
 export const GET_RELATED_PRODUCTS = gql`
   query getRelatedProducts($categorySlug: String!, $productSlug: String!) {
-    products(filter: { category: { slug: $categorySlug }, slug_not: $productSlug }, limit: 3) {
+    products(where: { category: { slug: $categorySlug }, slug_not: $productSlug }, first: 3) {
       slug
       name
-      image
+      price
+      description
+      image {
+        url
+        fileName
+      }
+      category {
+        slug
+        name
+      }
     }
   }
 `;

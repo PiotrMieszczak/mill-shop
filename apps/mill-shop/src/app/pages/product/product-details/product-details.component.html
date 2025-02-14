@@ -1,0 +1,33 @@
+<div>
+  <h1>Product Details</h1>
+
+  @if (loadingSignal()) {
+  <p>Loading product details...</p>
+  } @if (errorSignal()) {
+  <p>Error: {{ errorSignal() }}</p>
+  } @if (productDetailsSignal()) {
+  <h2>{{ productDetailsSignal()?.name }}</h2>
+  <img [src]="productDetailsSignal()?.image?.url" alt="{{ productDetailsSignal()?.image?.fileName }}" />
+  <p>{{ productDetailsSignal()?.description }}</p>
+  <p>Price: {{ productDetailsSignal()?.price }}</p>
+  }
+
+  <h2>Related Products</h2>
+
+  @if (relatedProductsLoadingSignal()) {
+  <p>Loading related products...</p>
+  } @if (relatedProductsErrorSignal()) {
+  <p>Error: {{ relatedProductsErrorSignal() }}</p>
+  }
+
+  <div>
+    @for (product of relatedProductsSignal(); track product) {
+    <div>
+      <a [routerLink]="['/category', categorySlug(), 'product', product.slug]">
+        <img [src]="product.image.url" alt="{{ product.image.fileName }}" />
+        <p>{{ product.name }}</p>
+      </a>
+    </div>
+    }
+  </div>
+</div>
