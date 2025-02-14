@@ -8,21 +8,63 @@ import { of } from 'rxjs';
 export class ProductFacadeService {
   private productApiService = inject(ProductApiService);
   private categorySlug = signal<string>('');
+  private productSlug = signal<string>('');
 
+  productsSignal = computed(() => this.productsResource.value() || []);
+  categorySignal = computed(() =>
+    this.productsSignal() && this.productsSignal().length
+      ? this.productsSignal().shift()?.category
+      : null,
+  );
+  productDetailsSignal = computed(() => this.productDetailsResource.value());
+  relatedProductsSignal = computed(() => this.relatedProductsResource.value() || []);
+  isLoadingSignal = computed(
+    () => this.productsResource.isLoading() || this.productDetailsResource.isLoading(),
+  );
+  hasErrorSignal = computed(
+    () => !!this.productsResource.error() || !!this.productDetailsResource.error(),
+  );
+  relatedProductsLoadingSignal = computed(() => this.relatedProductsResource.isLoading());
+  relatedProductsErrorSignal = computed(() => this.relatedProductsResource.error());
+
+  /*** Resources ***/
   productsResource = rxResource<Product[] | undefined, string>({
     request: () => this.categorySlug(),
     loader: ({ request: slug }) =>
       slug ? this.productApiService.getProductsByCategory(slug) : of([]),
   });
 
-  productsSignal = computed(() => this.productsResource.value() || []);
-  loadingSignal = computed(() => this.productsResource.isLoading());
-  errorSignal = computed(() => this.productsResource.error());
-  categorySignal = computed(() =>
-    this.productsSignal().length > 0 ? this.productsSignal()[0].category : null
-  );
+  productDetailsResource = rxResource<Product | undefined, { category: string; product: string }>({
+    request: () => ({
+      category: this.categorySlug(),
+      product: this.productSlug(),
+    }),
+    loader: ({ request }) =>
+      request.category && request.product
+        ? this.productApiService.getProductDetails(request.category, request.product)
+        : of(undefined),
+  });
+
+  relatedProductsResource = rxResource<
+    Product[] | undefined,
+    { category: string; product: string }
+  >({
+    request: () => ({
+      category: this.categorySlug(),
+      product: this.productSlug(),
+    }),
+    loader: ({ request }) =>
+      request.category && request.product
+        ? this.productApiService.getRelatedProducts(request.category, request.product)
+        : of([]),
+  });
 
   getProductsByCategory(slug: string): void {
     this.categorySlug.set(slug);
+  }
+
+  getProductDetails(categorySlug: string, productSlug: string): void {
+    this.categorySlug.set(categorySlug);
+    this.productSlug.set(productSlug);
   }
 }

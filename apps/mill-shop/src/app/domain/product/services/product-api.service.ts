@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GraphqlService } from '../../../shared/services/graphql.service';
-import { GET_PRODUCTS_BY_CATEGORY } from '../graphql/product.queries';
+import {
+  GET_PRODUCT_DETAILS,
+  GET_PRODUCTS_BY_CATEGORY,
+  GET_RELATED_PRODUCTS,
+} from '../graphql/product.queries';
 import { ProductDTO } from '../dto';
 import { Product } from '../interfaces';
 import { ProductAdapter } from '../adapters';
 
 @Injectable({ providedIn: 'root' })
 export class ProductApiService {
-  constructor(private graphql: GraphqlService) {}
+  private graphql = inject(GraphqlService);
 
   getProductsByCategory(slug: string): Observable<Product[]> {
     return this.graphql
@@ -17,6 +21,18 @@ export class ProductApiService {
         slug,
         fetchPolicy: 'cache-first',
       })
+      .pipe(map((data) => data.products.map(ProductAdapter.createProduct)));
+  }
+
+  getProductDetails(categorySlug: string, productSlug: string): Observable<Product> {
+    return this.graphql
+      .query<{ product: ProductDTO }>(GET_PRODUCT_DETAILS, { categorySlug, productSlug })
+      .pipe(map((data) => ProductAdapter.createProduct(data.product)));
+  }
+
+  getRelatedProducts(categorySlug: string, productSlug: string): Observable<Product[]> {
+    return this.graphql
+      .query<{ products: ProductDTO[] }>(GET_RELATED_PRODUCTS, { categorySlug, productSlug })
       .pipe(map((data) => data.products.map(ProductAdapter.createProduct)));
   }
 }
