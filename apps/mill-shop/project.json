@@ -23,9 +23,9 @@
           }
         ],
         "styles": ["apps/mill-shop/src/styles.scss"],
-    "stylePreprocessorOptions": {
-        "includePaths": ["libs/src/lib/design-system/foundations"]
-      },
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/src/lib/design-system/foundations"]
+        },
         "scripts": []
       },
       "configurations": {
