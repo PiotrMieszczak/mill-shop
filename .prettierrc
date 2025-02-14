@@ -1,6 +1,29 @@
 {
+  "printWidth": 100, 
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
-  "htmlWhitespaceSensitivity": "ignore"
+  "semi": true, 
+  "trailingComma": "all",
+  "bracketSpacing": true, 
+  "arrowParens": "always", 
+  "proseWrap": "preserve", 
+  "htmlWhitespaceSensitivity": "ignore",
+  "quoteProps": "consistent", 
+  "overrides": [
+    {
+      "files": "*.html", 
+      "options": {
+        "parser": "angular",
+        "printWidth": 120, 
+        "bracketSameLine": true 
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
 }
