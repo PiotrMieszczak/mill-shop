@@ -1,0 +1,19 @@
+<!-- <lib-clickbox [isLoading]="isLoadingSignal()" class="category" (click)="onClick()">
+  <img [src]="backgroundImageSignal()" [alt]="categorySignal()?.name" class="category-image" />
+  <div class="category-name">{{ categorySignal()?.name }}</div>
+</lib-clickbox> -->
+
+<lib-clickbox [isLoading]="isLoadingSignal()" class="product-card" (click)="onClick(productSignal()?.slug)">
+  <img
+    [src]="backgroundImageSignal(productSignal()?.image?.url)"
+    [alt]="productSignal()?.name"
+    class="product-card-image" />
+  <div class="product-card-name">{{ productSignal()?.name }}</div>
+  <div class="product-card-price">{{ productSignal()?.price | currency : 'EUR' : 'symbol-narrow' }}</div>
+  <lib-button
+    type="primary"
+    (click)="onClick(productSignal()?.slug); $event.stopPropagation(); $event.preventDefault()"
+    class="product-card-button">
+    Show
+  </lib-button>
+</lib-clickbox>

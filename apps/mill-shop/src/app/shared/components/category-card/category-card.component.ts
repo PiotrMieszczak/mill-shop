@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, computed, inject, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Category } from '../../interfaces';
 import { Router } from '@angular/router';
 import { ClickboxComponent } from '@mill-shop/design-system/components';
@@ -16,8 +16,6 @@ export class CategoryCardComponent {
   private sanitizer = inject(DomSanitizer);
   categorySignal = input<Category>();
   isLoadingSignal = input<boolean>(false);
-
-  @Output() categorySelected = new EventEmitter<string>();
 
   backgroundImageSignal() {
     return this.sanitizer.bypassSecurityTrustUrl(`${this.categorySignal()?.image?.url || ''}`);
