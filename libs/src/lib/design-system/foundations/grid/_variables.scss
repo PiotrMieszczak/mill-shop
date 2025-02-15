@@ -1,9 +1,3 @@
 $grid-columns-desktop: 12;
 $grid-columns-mobile: 4;
 $grid-gap: 1rem;
-
-:root {
-  --grid-columns-desktop: #{$grid-columns-desktop};
-  --grid-columns-mobile: #{$grid-columns-mobile};
-  --grid-gap: #{$grid-gap};
-}

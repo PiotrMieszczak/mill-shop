@@ -1,0 +1,27 @@
+@use "../../../../../../libs/src/lib/design-system/foundations" as core;
+
+.banner-container {
+  width: 100dvw;
+  height: 60dvh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.banner-header {
+  max-width: 50%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+  color: core.$color-system-negative;
+  padding: core.$space-3 core.$space-5;
+
+  @include core.font(h1, mobile);
+
+  @include core.breakpoint-up(core.$bp-bp-desktop) {
+    @include core.font(h1, desktop);
+  }
+}

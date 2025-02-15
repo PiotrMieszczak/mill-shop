@@ -9,6 +9,7 @@
 @use "../grid/variables" as *;
 @use "../shadow/variables" as *;
 @use "../breakpoints/variables" as *;
+@use "../grid/variables" as *;
 
 :root {
   --font-type-default: #{$font-type-default};
@@ -106,4 +107,9 @@
   --bp-tablet: #{$bp-tablet};
   --bp-desktop: #{$bp-desktop};
   --bp-large: #{$bp-large};
+
+  /* Grid */
+  --grid-columns-desktop: #{$grid-columns-desktop};
+  --grid-columns-mobile: #{$grid-columns-mobile};
+  --grid-gap: #{$grid-gap};
 }
