@@ -61,6 +61,7 @@ describe('ProductApiService', () => {
       expect(graphqlServiceMock.query).toHaveBeenCalledWith(GET_PRODUCT_DETAILS, {
         categorySlug: 'electronics',
         productSlug: 'laptop',
+        fetchPolicy: 'cache-first',
       });
       expect(product).toEqual(mockProduct);
       done();

@@ -26,13 +26,21 @@ export class ProductApiService {
 
   getProductDetails(categorySlug: string, productSlug: string): Observable<Product> {
     return this.graphql
-      .query<{ product: ProductDTO }>(GET_PRODUCT_DETAILS, { categorySlug, productSlug })
+      .query<{ product: ProductDTO }>(GET_PRODUCT_DETAILS, {
+        categorySlug,
+        productSlug,
+        fetchPolicy: 'cache-first',
+      })
       .pipe(map((data) => ProductAdapter.createProduct(data.product)));
   }
 
   getRelatedProducts(categorySlug: string, productSlug: string): Observable<Product[]> {
     return this.graphql
-      .query<{ products: ProductDTO[] }>(GET_RELATED_PRODUCTS, { categorySlug, productSlug })
+      .query<{ products: ProductDTO[] }>(GET_RELATED_PRODUCTS, {
+        categorySlug,
+        productSlug,
+        fetchPolicy: 'cache-first',
+      })
       .pipe(map((data) => data.products.map(ProductAdapter.createProduct)));
   }
 }

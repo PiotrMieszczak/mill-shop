@@ -11,9 +11,7 @@ describe('CategoryFacade', () => {
   let facade: CategoryFacade;
   let categoryApiServiceMock: jest.Mocked<CategoryApiService>;
 
-  const mockCategories: Category[] = mockCategoryDTO.map(
-    CategoryAdapter.createCategory
-  );
+  const mockCategories: Category[] = mockCategoryDTO.map(CategoryAdapter.createCategory);
 
   beforeEach(() => {
     const mockCategoryApiService = {
@@ -28,9 +26,7 @@ describe('CategoryFacade', () => {
     });
 
     facade = TestBed.inject(CategoryFacade);
-    categoryApiServiceMock = TestBed.inject(
-      CategoryApiService
-    ) as jest.Mocked<CategoryApiService>;
+    categoryApiServiceMock = TestBed.inject(CategoryApiService) as jest.Mocked<CategoryApiService>;
   });
 
   it('should load categories successfully', async () => {
@@ -57,16 +53,14 @@ describe('CategoryFacade', () => {
 
   it('should handle API failure', async () => {
     const errorResponse = { message: 'Failed to fetch', status: 500 };
-    categoryApiServiceMock.getCategories.mockReturnValue(
-      throwError(() => errorResponse)
-    );
+    categoryApiServiceMock.getCategories.mockReturnValue(throwError(() => errorResponse));
 
     expect(facade.categoriesSignal()).toEqual([]);
     expect(facade.errorSignal()).toBeUndefined();
 
     await TestBed.runInInjectionContext(async () => {
       try {
-        facade.categoriesResource.value(); // ✅ Ensure fetch is triggered
+        facade.categoriesResource.value();
         await firstValueFrom(toObservable(facade.categoriesResource.error));
       } catch (_) {
         expect(facade.errorSignal()).toBe('Failed to fetch');

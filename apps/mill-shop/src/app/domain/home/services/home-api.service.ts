@@ -12,7 +12,7 @@ export class HomeApiService {
 
   getHomePageData(): Observable<HomePage> {
     return this.graphql
-      .query<{ pages: HomePageDTO[] }>(GET_HOME_PAGE)
-      .pipe(map((data) => HomePageAdapter.createHomePage(data.pages[0])));
+      .query<{ page: HomePageDTO }>(GET_HOME_PAGE, { fetchPolicy: 'cache-first' })
+      .pipe(map((data) => HomePageAdapter.createHomePage(data.page)));
   }
 }
