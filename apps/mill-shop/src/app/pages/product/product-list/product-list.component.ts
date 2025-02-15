@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
-import { ClickboxComponent, LinkComponent } from '@mill-shop/design-system/components';
+import {
+  ButtonComponent,
+  ClickboxComponent,
+  LinkComponent,
+} from '@mill-shop/design-system/components';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CurrencyPipe } from '@angular/common';
 
@@ -10,7 +14,7 @@ import { CurrencyPipe } from '@angular/common';
   standalone: true,
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
-  imports: [ClickboxComponent, CurrencyPipe, LinkComponent],
+  imports: [ClickboxComponent, CurrencyPipe, LinkComponent, ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {

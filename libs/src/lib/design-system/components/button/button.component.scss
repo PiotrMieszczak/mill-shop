@@ -4,27 +4,28 @@
 @use "../../foundations/shadow/variables" as shadow;
 @use "../../foundations/space/variables" as space;
 @use "../../foundations/typography/variables" as font;
+@use "../../foundations/mixins" as mixins;
 @use "sass:map";
-
-:host {
-  display: inline-block;
-}
 
 .lib-button {
   font-family: inherit;
   border: none;
   cursor: pointer;
   border-radius: space.$space-1;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.4s;
+  transition-timing-function: ease-in-out;
+  width: 100%;
 }
 
 $button-variants: (
   primary: (
-    bg: color.$primary-6,
+    bg: color.$primary-5,
+    hover-bg: color.$primary-7,
     text: color.$system-negative,
   ),
   secondary: (
     bg: color.$secondary-6,
+    hover-bg: color.$secondary-7,
     text: color.$system-negative,
   ),
   success: (
@@ -41,12 +42,14 @@ $button-variants: (
   :host([data-type="#{$type}"]) .lib-button {
     background-color: map.get($values, bg);
     color: map.get($values, text);
-    border: border.$border-default;
+
+    @include mixins.border(map.get($values, bg), shadow.$shadow-medium);
   }
 
   :host([data-type="#{$type}"]) .lib-button:hover {
     border: border.$border-hover;
-    box-shadow: shadow.$shadow-medium;
+    background-color: map.get($values, hover-bg);
+    box-shadow: shadow.$shadow-strong;
   }
 }
 

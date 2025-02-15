@@ -30,7 +30,7 @@
   }
 
   &.hovered {
-    @include mixins.border(border.$border-hover, shadow.$shadow-medium);
+    @include mixins.border(border.$border-hover, shadow.$shadow-strong);
   }
 
   &.clicked {
