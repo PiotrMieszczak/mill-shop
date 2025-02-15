@@ -1,11 +1,12 @@
-@if(categorySignal()) {
-<h2>Products in {{ categorySignal()?.name }}</h2>
-} @if(loadingSignal()) {
-<p>Loading...</p>
-} @if(errorSignal()) {
-<p>Error</p>
-} @for (product of productsSignal(); track product) {
-<a [routerLink]="['/category', categorySignal()?.slug, 'product', product.slug]">
-  {{ product.name }}
-</a>
-}
+<div class="lib-container">
+  <h1 class="title">Products in {{ categorySignal()?.name }}</h1>
+  <div class="grid p-b-4">
+    @for ( product of productsSignal(); track product.slug; let index = $index) {
+    <lib-clickbox [isLoading]="loadingSignal()" class="product-card col-m-3 col-d-3" (click)="onClick(product.slug)">
+      <img [src]="backgroundImageSignal(product.image.url)" [alt]="product?.name" class="product-card-image" />
+      <div class="product-card-name">{{ product.name }}</div>
+      <div class="product-card-price">{{ product.price | currency : 'EUR' : 'symbol-narrow' }}</div>
+    </lib-clickbox>
+    }
+  </div>
+</div>
