@@ -1,8 +1,3 @@
-<!-- <lib-clickbox [isLoading]="isLoadingSignal()" class="category" (click)="onClick()">
-  <img [src]="backgroundImageSignal()" [alt]="categorySignal()?.name" class="category-image" />
-  <div class="category-name">{{ categorySignal()?.name }}</div>
-</lib-clickbox> -->
-
 <lib-clickbox [isLoading]="isLoadingSignal()" class="product-card" (click)="onClick(productSignal()?.slug)">
   <img
     [src]="backgroundImageSignal(productSignal()?.image?.url)"

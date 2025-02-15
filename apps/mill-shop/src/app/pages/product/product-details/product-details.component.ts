@@ -2,12 +2,22 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
 import { CountdownTimerComponent } from './components/countdown-timer.component';
+import { ProductCardComponent } from '../../../shared/components';
+import { ButtonComponent } from '@mill-shop/design-system/components';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   templateUrl: './product-details.component.html',
-  imports: [RouterModule, CountdownTimerComponent],
+  styleUrl: './product-details.component.scss',
+  imports: [
+    RouterModule,
+    CountdownTimerComponent,
+    ProductCardComponent,
+    ButtonComponent,
+    CurrencyPipe,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent implements OnInit {

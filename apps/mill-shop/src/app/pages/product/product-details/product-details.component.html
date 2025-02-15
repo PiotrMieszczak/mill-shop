@@ -1,33 +1,30 @@
-<div>
-  <h1>Product Details</h1>
-  <app-countdown-timer />
-  @if (loadingSignal()) {
-  <p>Loading product details...</p>
-  } @if (errorSignal()) {
-  <p>Error: {{ errorSignal() }}</p>
-  } @if (productDetailsSignal()) {
-  <h2>{{ productDetailsSignal()?.name }}</h2>
-  <img [src]="productDetailsSignal()?.image?.url" alt="{{ productDetailsSignal()?.image?.fileName }}" />
-  <p>{{ productDetailsSignal()?.description }}</p>
-  <p>Price: {{ productDetailsSignal()?.price }}</p>
-  }
-
-  <h2>Related Products</h2>
-
-  @if (relatedProductsLoadingSignal()) {
-  <p>Loading related products...</p>
-  } @if (relatedProductsErrorSignal()) {
-  <p>Error: {{ relatedProductsErrorSignal() }}</p>
-  }
-
-  <div>
-    @for (product of relatedProductsSignal(); track product) {
-    <div>
-      <a [routerLink]="['/category', categorySlug(), 'product', product.slug]">
-        <img [src]="product.image.url" alt="{{ product.image.fileName }}" />
-        <p>{{ product.name }}</p>
-      </a>
+<div class="lib-container">
+  <div class="grid p-t-7">
+    <h2 class="title col-m-4 col-d-12">{{ productDetailsSignal()?.name }}</h2>
+    <img
+      [src]="productDetailsSignal()?.image?.url"
+      alt="{{ productDetailsSignal()?.image?.fileName }}"
+      class="product-image col-m-2 col-d-4" />
+    <div class="product-description col-m-2 col-d-4">
+      <div>{{ productDetailsSignal()?.description }}</div>
     </div>
-    }
+    <div class="price-wrapper col-m-2 col-d-4">
+      <div class="price">{{ productDetailsSignal()?.price | currency : 'EUR' }}</div>
+      <app-countdown-timer class="countdown-timer" />
+      <lib-button size="large" class="buy-button">Buy now</lib-button>
+    </div>
   </div>
+
+  <section class="related-products-wrapper">
+    <div class="header col-m-4 col-d-12">Related products</div>
+    <div class="grid p-b-4">
+      @for (product of relatedProductsSignal(); track product.slug; let index = $index) {
+      <app-product-card
+        [productSignal]="product"
+        [categorySlug]="categorySlug()"
+        [isLoadingSignal]="relatedProductsLoadingSignal()"
+        class="product-card col-m-2 col-d-4" />
+      }
+    </div>
+  </section>
 </div>

@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonComponent, ClickboxComponent } from '@mill-shop/design-system/components';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ export class ProductCardComponent {
   private router = inject(Router);
   private sanitizer = inject(DomSanitizer);
   productSignal = input<Product>();
+  categorySlug = input<string>();
   isLoadingSignal = input<boolean>(false);
 
   backgroundImageSignal(imageUrl: string | undefined) {
@@ -25,6 +26,6 @@ export class ProductCardComponent {
 
   onClick(productSlug: string | undefined) {
     if (!productSlug) return;
-    this.router.navigate(['/categories', this.productSignal()?.slug, 'product', productSlug]);
+    this.router.navigate(['/categories', this.categorySlug(), 'product', productSlug]);
   }
 }

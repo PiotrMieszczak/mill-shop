@@ -1,9 +1,10 @@
 <div class="lib-container">
-  <h1 class="title">Products in {{ categorySignal()?.name }}</h1>
+  <h1 class="title">Products in {{ categorySignal()?.name }} category</h1>
   <div class="grid p-b-4">
     @for ( product of productsSignal(); track product.slug; let index = $index) {
     <app-product-card
       [productSignal]="product"
+      [categorySlug]="categorySlug()"
       [isLoadingSignal]="loadingSignal()"
       class="product-card col-m-2 col-d-3" />
     }

@@ -3,24 +3,28 @@
 
 .countdown-timer {
   text-align: center;
-  padding: foundation.$space-5;
+}
+
+.timer-header {
+  @include mixins.font(body1, desktop);
+  text-align: left;
 }
 
 .timer-display {
   display: flex;
   justify-content: center;
   align-items: center;
-  @include mixins.font(body1, desktop);
+  @include mixins.font(body2, desktop);
 }
 
 .time-box {
   background: foundation.$color-secondary-7;
   color: foundation.$color-system-negative;
   padding: foundation.$space-3 foundation.$space-4;
-  margin: foundation.$space-2;
+  margin: foundation.$space-2 0;
   display: inline-block;
   text-align: center;
-  width: 64px;
+  width: 30%;
 
   font-size: foundation.$font-font-size-7;
   box-shadow: foundation.$shadow-shadow-strong;

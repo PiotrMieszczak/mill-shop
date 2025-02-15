@@ -1,0 +1,33 @@
+@use "../../../../../../../libs/src/lib/design-system/foundations" as core;
+
+.title {
+  @include core.font(title2, desktop);
+}
+.product-image {
+  height: 20dvh;
+}
+
+.product-description {
+  @include core.font(body1, desktop);
+}
+
+.price-wrapper {
+  padding: core.$space-4;
+  @include core.border(core.$border-border-default);
+
+  .price {
+    color: #d00000; // TODO add to designs system
+    @include core.font(price1, desktop);
+  }
+}
+
+.related-products-wrapper {
+  .header {
+    margin: core.$space-4 0;
+    @include core.font(title2, mobile);
+
+    @include core.breakpoint-up(core.$bp-bp-desktop) {
+      @include core.font(title2, desktop);
+    }
+  }
+}
