@@ -7,6 +7,7 @@ import { CategoryCardComponent } from '../../shared/components/category-card/cat
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './category-list.component.html',
+  styleUrl: './category-list.component.scss',
   imports: [CategoryCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

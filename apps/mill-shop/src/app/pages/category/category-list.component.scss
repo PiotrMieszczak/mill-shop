@@ -1,0 +1,20 @@
+@use "../../../../../../libs/src/lib/design-system/foundations" as core;
+
+.title {
+  font-weight: core.$font-font-weight-bold;
+  margin: core.$space-4 0;
+
+  @include core.font(title2, mobile);
+
+  @include core.breakpoint-up(core.$bp-bp-desktop) {
+    @include core.font(title2, desktop);
+  }
+}
+
+.category-card {
+  height: 20dvh;
+
+  @include core.breakpoint-up(core.$bp-bp-desktop) {
+    height: 30dvh;
+  }
+}

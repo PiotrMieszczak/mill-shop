@@ -1,6 +1,11 @@
 <div class="lib-container">
   <h1 class="title">Categories</h1>
-  @for ( category of categoriesSignal(); track category.slug; let index = $index) {
-  <app-category-card [categorySignal]="category" [isLoadingSignal]="loadingSignal()"></app-category-card>
-  }
+  <div class="grid p-b-4">
+    @for ( category of categoriesSignal(); track category.slug; let index = $index) {
+    <app-category-card
+      [categorySignal]="category"
+      [isLoadingSignal]="loadingSignal()"
+      class="category-card col-m-4 col-d-4"></app-category-card>
+    }
+  </div>
 </div>
