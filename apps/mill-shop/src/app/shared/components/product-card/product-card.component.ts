@@ -1,4 +1,4 @@
-import { Component, inject, Input, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonComponent, ClickboxComponent } from '@mill-shop/design-system/components';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -24,8 +24,17 @@ export class ProductCardComponent {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 
+  // onClick(productSlug: string | undefined) {
+  //   if (!productSlug) return;
+  //   this.router.navigate(['/categories', this.categorySlug(), 'product', productSlug]);
+  // }
+
   onClick(productSlug: string | undefined) {
     if (!productSlug) return;
-    this.router.navigate(['/categories', this.categorySlug(), 'product', productSlug]);
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() =>
+        this.router.navigate(['/categories', this.categorySlug(), 'product', productSlug]),
+      );
   }
 }
