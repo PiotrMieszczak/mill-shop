@@ -33,8 +33,6 @@ export default [
     },
     rules: {
       ...angular.configs.recommended.rules,
-
-      // ✅ Add the component selector rule
       '@angular-eslint/component-selector': [
         'error',
         {
@@ -44,6 +42,7 @@ export default [
         },
       ],
     },
+    ignores: ['libs/src/lib/design-system/**/*'], 
   },
   {
     files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],

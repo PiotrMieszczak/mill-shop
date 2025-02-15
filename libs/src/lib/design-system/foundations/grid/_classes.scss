@@ -1,14 +1,13 @@
-@use 'variables';
-@use 'mixins';
-@use '../breakpoints/mixins' as bp-mixins;
-
+@use "variables";
+@use "../breakpoints/mixins" as bp-mixins;
+@use "../breakpoints/variables" as bp;
 
 .grid {
   display: grid;
   grid-gap: variables.$grid-gap;
   grid-template-columns: repeat(variables.$grid-columns-mobile, 1fr);
 
-  @include bp-mixins.breakpoint-desktop {
+  @include bp-mixins.breakpoint-up(bp.$bp-desktop) {
     grid-template-columns: repeat(variables.$grid-columns-desktop, 1fr);
   }
 }
@@ -22,23 +21,28 @@
 
 @for $i from 1 through variables.$grid-columns-desktop {
   .col-d-#{$i} {
-    @include bp-mixins.breakpoint-desktop {
+    @include bp-mixins.breakpoint-up(bp.$bp-desktop) {
       grid-column: span $i;
     }
   }
 }
 
+@for $i from 1 through max(variables.$grid-columns-mobile, variables.$grid-columns-desktop) {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
 /* Utility Classes for Offsets */
 @for $i from 1 through (variables.$grid-columns-mobile - 1) {
   .offset-m-#{$i} {
-    grid-column-start: #{ $i + 1 };
+    grid-column-start: #{$i + 1};
   }
 }
 
 @for $i from 1 through (variables.$grid-columns-desktop - 1) {
   .offset-d-#{$i} {
-    @include bp-mixins.breakpoint-desktop {
-      grid-column-start: #{ $i + 1 };
+    @include bp-mixins.breakpoint-up(bp.$bp-desktop) {
+      grid-column-start: #{$i + 1};
     }
   }
 }

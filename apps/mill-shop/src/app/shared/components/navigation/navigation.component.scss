@@ -3,7 +3,7 @@
 .navbar {
   width: 100%;
   padding: core.$space-4;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   z-index: 1000;
   background-color: core.$color-system-negative;
   box-shadow: core.$shadow-shadow-strong;
@@ -24,7 +24,8 @@
 
 .logo {
   height: 50px;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease-in-out;
+
   cursor: pointer;
 
   .scrolled & {

@@ -1,11 +1,15 @@
-@use 'variables' as variables;
-@use '../shadow/variables' as shadows;
+@use "variables" as variables;
+@use "../shadow/variables" as shadows;
 
-@mixin border($border-color: variables.$border--default, $shadow: shadows.$shadow-light, $important: '') {
+@mixin border(
+  $border-color: variables.$border--default,
+  $shadow: shadows.$shadow-light,
+  $important: ""
+) {
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -13,7 +17,7 @@
     height: 100%;
     pointer-events: none;
     z-index: var(--border-index, 1);
-    border-radius: var(--radius, 0);
+    border-radius: var(--radius, 8px);
     box-shadow: #{$border-color} #{$important}, #{$shadow} #{$important};
   }
 }

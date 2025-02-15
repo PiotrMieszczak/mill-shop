@@ -31,4 +31,5 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  
 ];

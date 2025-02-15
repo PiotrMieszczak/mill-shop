@@ -3,6 +3,8 @@
 @use "../../foundations/mixins" as *;
 @use "../../foundations/shadow/variables" as shadow;
 @use "../../foundations/space/variables" as space;
+@use "../../foundations/typography/variables" as font;
+@use "sass:map";
 
 :host {
   display: inline-block;
@@ -17,34 +19,55 @@
 }
 
 $button-variants: (
-  primary: (bg: color.$primary-6, text: color.$system-negative),
-  secondary: (bg: color.$secondary-6, text: color.$system-negative),
-  success: (bg: color.$success, text: color.$system-negative),
-  error: (bg: color.$error, text: color.$system-negative)
+  primary: (
+    bg: color.$primary-6,
+    text: color.$system-negative,
+  ),
+  secondary: (
+    bg: color.$secondary-6,
+    text: color.$system-negative,
+  ),
+  success: (
+    bg: color.$success,
+    text: color.$system-negative,
+  ),
+  error: (
+    bg: color.$error,
+    text: color.$system-negative,
+  ),
 );
 
 @each $type, $values in $button-variants {
   :host([data-type="#{$type}"]) .lib-button {
-    background-color: map-get($values, bg);
-    color: map-get($values, text);
-    border: border.$border--default;
+    background-color: map.get($values, bg);
+    color: map.get($values, text);
+    border: border.$border-default;
   }
 
   :host([data-type="#{$type}"]) .lib-button:hover {
-    border: border.$border--hover;
+    border: border.$border-hover;
     box-shadow: shadow.$shadow-medium;
   }
 }
 
 $button-sizes: (
-  small: (padding: space.$space-1 space.$space-2, font-size: font.$font-size-1),
-  medium: (padding: space.$space-2 space.$space-4, font-size: font.$font-size-3),
-  large: (padding: space.$space-3 space.$space-5, font-size: font.$font-size-5)
+  small: (
+    padding: space.$space-1 space.$space-2,
+    font-size: font.$font-size-1,
+  ),
+  medium: (
+    padding: space.$space-2 space.$space-4,
+    font-size: font.$font-size-3,
+  ),
+  large: (
+    padding: space.$space-3 space.$space-5,
+    font-size: font.$font-size-5,
+  ),
 );
 
 @each $size, $values in $button-sizes {
-    :host([data-size="#{$size}"]) .lib-button {
-        padding: map-get($values, padding);
-        font-size: map-get($values, font-size);
-    }
+  :host([data-size="#{$size}"]) .lib-button {
+    padding: map.get($values, padding);
+    font-size: map.get($values, font-size);
+  }
 }
