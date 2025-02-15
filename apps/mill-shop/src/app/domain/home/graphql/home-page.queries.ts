@@ -13,3 +13,17 @@ export const GET_HOME_PAGE = gql`
     }
   }
 `;
+
+export const GET_TOP_CATEGORIES = gql`
+  query {
+    categories(first: 3, orderBy: name_ASC) {
+      id
+      slug
+      name
+      image {
+        url
+        fileName
+      }
+    }
+  }
+`;
