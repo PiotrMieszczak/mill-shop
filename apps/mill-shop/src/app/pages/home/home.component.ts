@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
 import { HomeFacadeService } from '../../domain/home/facade';
 
 @Component({
@@ -8,15 +8,20 @@ import { HomeFacadeService } from '../../domain/home/facade';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private facade = inject(HomeFacadeService);
 
   homePageSignal = this.facade.homePageSignal;
   loadingSignal = this.facade.loadingSignal;
   errorSignal = this.facade.errorSignal;
   backgroundImageSignal = computed(() => `url(${this.homePageSignal()?.banner.url})`);
-  constructor() {
+
+  topCategoriesSignal = this.facade.topCategoriesSignal;
+  topLoadingSignal = this.facade.topLoadingSignal;
+  topErrorSignal = this.facade.topErrorSignal;
+
+  ngOnInit(): void {
     this.facade.loadHomePage();
-    console.log('homePageSignal', this.homePageSignal());
+    this.facade.getTopCategories();
   }
 }

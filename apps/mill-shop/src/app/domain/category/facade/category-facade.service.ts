@@ -11,11 +11,23 @@ export class CategoryFacade {
     loader: () => this.categoryApiService.getCategories(),
   });
 
+  topCategoriesResource = rxResource<Category[] | undefined, void>({
+    loader: () => this.categoryApiService.getTopCategories(),
+  });
+
   categoriesSignal = computed(() => this.categoriesResource.value() || []);
   loadingSignal = computed(() => this.categoriesResource.isLoading());
   errorSignal = computed(() => this.categoriesResource.error());
 
-  public loadCategories(): void {
+  topCategoriesSignal = computed(() => this.topCategoriesResource.value() || []);
+  topLoadingSignal = computed(() => this.topCategoriesResource.isLoading());
+  topErrorSignal = computed(() => this.topCategoriesResource.error());
+
+  loadCategories(): void {
+    this.categoriesResource.reload();
+  }
+
+  getTopCategories(): void {
     this.categoriesResource.reload();
   }
 }
