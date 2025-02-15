@@ -20,6 +20,11 @@
           {
             "glob": "**/*",
             "input": "apps/mill-shop/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "apps/mill-shop/assets",
+            "output": "assets"
           }
         ],
         "styles": ["apps/mill-shop/src/styles.scss"],

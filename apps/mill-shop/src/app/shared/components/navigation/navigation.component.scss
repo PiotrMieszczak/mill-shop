@@ -1,0 +1,43 @@
+@use "../../../../../../../libs/src/lib/design-system/foundations/variables" as foundation;
+@use "../../../../../../../libs/src/lib/design-system/foundations/mixins" as mixins;
+
+.navbar {
+  width: 100%;
+  padding: foundation.$space-4;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  background-color: transparent;
+  box-shadow: foundation.$shadow-shadow-strong;
+
+  &.scrolled {
+    position: fixed;
+    top: 0;
+    padding: foundation.$space-2;
+    background-color: foundation.$color-neutral-2;
+    box-shadow: foundation.$shadow-shadow-medium;
+  }
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 foundation.$space-6;
+}
+
+.logo {
+  height: 50px;
+  transition: height 0.3s ease;
+  cursor: pointer;
+
+  .scrolled & {
+    height: 40px;
+  }
+}
+
+.navbar-right {
+  display: flex;
+  gap: foundation.$space-4;
+}

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HomeFacadeService } from '../../domain/home/facade';
 
 @Component({
   selector: 'app-home-page',
@@ -6,4 +7,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  private facade = inject(HomeFacadeService);
+
+  homePageSignal = this.facade.homePageSignal;
+  loadingSignal = this.facade.loadingSignal;
+  errorSignal = this.facade.errorSignal;
+
+  constructor() {
+    this.facade.loadHomePage();
+  }
+}

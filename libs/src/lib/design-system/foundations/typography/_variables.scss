@@ -1,18 +1,18 @@
 :root {
-  --font-type-default: 'Inter', sans-serif;
+  --font-type-default: "Inter", sans-serif;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
 
   /* Font Sizes */
-  --font-size-1: 0.75rem;  /* 12px */
+  --font-size-1: 0.75rem; /* 12px */
   --font-size-2: 0.875rem; /* 14px */
-  --font-size-3: 1rem;     /* 16px */
-  --font-size-4: 1.25rem;  /* 20px */
-  --font-size-5: 1.5rem;   /* 24px */
-  --font-size-6: 2rem;     /* 32px */
-  --font-size-7: 2.5rem;   /* 40px */
-  --font-size-8: 3rem;     /* 48px */
-  --font-size-9: 3.75rem;  /* 60px */
+  --font-size-3: 1rem; /* 16px */
+  --font-size-4: 1.25rem; /* 20px */
+  --font-size-5: 1.5rem; /* 24px */
+  --font-size-6: 2rem; /* 32px */
+  --font-size-7: 2.5rem; /* 40px */
+  --font-size-8: 3rem; /* 48px */
+  --font-size-9: 3.75rem; /* 60px */
 
   /* Line Heights */
   --line-height-1: 1.2;
@@ -23,7 +23,7 @@
 }
 
 // -- Font Type ---
-$type-default: var(--font-type-default, sans-serif);
+$font-family: var(--font-type-default, sans-serif);
 
 // -- Font Weight --
 $weight-regular: var(--font-weight-regular);
@@ -50,39 +50,93 @@ $line-height-5: var(--line-height-5);
 // -- Line Scale --
 $typography-scale: (
   h1: (
-    mobile: (font-size: $font-size-7, line-height: $line-height-5),
-    desktop: (font-size: $font-size-9, line-height: $line-height-5),
+    mobile: (
+      font-size: $font-size-7,
+      line-height: $line-height-5,
+    ),
+    desktop: (
+      font-size: $font-size-9,
+      line-height: $line-height-5,
+    ),
   ),
   h2: (
-    mobile: (font-size: $font-size-6, line-height: $line-height-4),
-    desktop: (font-size: $font-size-8, line-height: $line-height-4),
+    mobile: (
+      font-size: $font-size-6,
+      line-height: $line-height-4,
+    ),
+    desktop: (
+      font-size: $font-size-8,
+      line-height: $line-height-4,
+    ),
   ),
   body1: (
-    mobile: (font-size: $font-size-3, line-height: $line-height-3),
-    desktop: (font-size: $font-size-4, line-height: $line-height-3),
+    mobile: (
+      font-size: $font-size-3,
+      line-height: $line-height-3,
+    ),
+    desktop: (
+      font-size: $font-size-4,
+      line-height: $line-height-3,
+    ),
   ),
   body2: (
-    mobile: (font-size: $font-size-2, line-height: $line-height-2),
-    desktop: (font-size: $font-size-3, line-height: $line-height-3),
+    mobile: (
+      font-size: $font-size-2,
+      line-height: $line-height-2,
+    ),
+    desktop: (
+      font-size: $font-size-3,
+      line-height: $line-height-3,
+    ),
   ),
   small: (
-    mobile: (font-size: $font-size-1, line-height: $line-height-1),
-    desktop: (font-size: $font-size-2, line-height: $line-height-2),
+    mobile: (
+      font-size: $font-size-1,
+      line-height: $line-height-1,
+    ),
+    desktop: (
+      font-size: $font-size-2,
+      line-height: $line-height-2,
+    ),
   ),
-  title1: ( 
-    mobile: (font-size: $font-size-9, line-height: $line-height-5),
-    desktop: (font-size: $font-size-9, line-height: $line-height-5),
+  title1: (
+    mobile: (
+      font-size: $font-size-9,
+      line-height: $line-height-5,
+    ),
+    desktop: (
+      font-size: $font-size-9,
+      line-height: $line-height-5,
+    ),
   ),
-  title2: ( 
-    mobile: (font-size: $font-size-6, line-height: $line-height-4),
-    desktop: (font-size: $font-size-7, line-height: $line-height-4),
+  title2: (
+    mobile: (
+      font-size: $font-size-6,
+      line-height: $line-height-4,
+    ),
+    desktop: (
+      font-size: $font-size-7,
+      line-height: $line-height-4,
+    ),
   ),
   price1: (
-    mobile: (font-size: $font-size-7, line-height: $line-height-4),
-    desktop: (font-size: $font-size-8, line-height: $line-height-4),
+    mobile: (
+      font-size: $font-size-7,
+      line-height: $line-height-4,
+    ),
+    desktop: (
+      font-size: $font-size-8,
+      line-height: $line-height-4,
+    ),
   ),
   price2: (
-    mobile: (font-size: $font-size-5, line-height: $line-height-3),
-    desktop: (font-size: $font-size-6, line-height: $line-height-3),
+    mobile: (
+      font-size: $font-size-5,
+      line-height: $line-height-3,
+    ),
+    desktop: (
+      font-size: $font-size-6,
+      line-height: $line-height-3,
+    ),
   ),
 );
