@@ -1,12 +1,5 @@
-:root {
-    --bp-mobile: 375px;   /* Mobile */
-    --bp-tablet: 768px;   /* Tablet */
-    --bp-desktop: 1024px; /* Desktop */
-    --bp-large: 1440px;   /* Large Screens */
-  }
-  
-  $bp-mobile: var(--bp-mobile);
-  $bp-tablet: var(--bp-tablet);
-  $bp-desktop: var(--bp-desktop);
-  $bp-large: var(--bp-large);
-  
+/* SCSS Variables (Defined with Direct Values) */
+$bp-mobile: 375px; /* Mobile */
+$bp-tablet: 768px; /* Tablet */
+$bp-desktop: 1024px; /* Desktop */
+$bp-large: 1440px; /* Large Screens */

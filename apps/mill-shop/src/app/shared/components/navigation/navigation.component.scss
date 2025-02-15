@@ -7,14 +7,14 @@
   transition: all 0.3s ease;
   z-index: 1000;
   background-color: transparent;
-  box-shadow: foundation.$shadow-shadow-strong;
+  box-shadow: core.$shadow-shadow-strong;
 
   &.scrolled {
     position: fixed;
     top: 0;
-    padding: foundation.$space-2;
-    background-color: foundation.$color-neutral-2;
-    box-shadow: foundation.$shadow-shadow-medium;
+    padding: core.$space-2;
+    background-color: core.$color-neutral-2;
+    box-shadow: core.$shadow-shadow-medium;
   }
 }
 
@@ -24,7 +24,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 foundation.$space-6;
+  padding: 0 core.$space-6;
 }
 
 .logo {
@@ -39,5 +39,5 @@
 
 .navbar-right {
   display: flex;
-  gap: foundation.$space-4;
+  gap: core.$space-4;
 }

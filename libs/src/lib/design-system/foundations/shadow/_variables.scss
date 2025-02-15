@@ -1,17 +1,6 @@
-:root {
-  /* Basic Elevation Shadows */
-  --shadow-light: 0px 1px 3px rgba(0, 0, 0, 0.10);
-  --shadow-medium: 0px 3px 6px rgba(0, 0, 0, 0.12);
-  --shadow-strong: 0px 6px 12px rgba(0, 0, 0, 0.15);
-
-  /* Interactive Shadows */
-  --shadow-hover: 0px 4px 8px rgba(0, 0, 0, 0.18);
-  --shadow-focus: 0px 0px 2px 2px rgba(1, 110, 244, 0.3);
-}
-
 /* SCSS Variables */
-$shadow-light: var(--shadow-light);
-$shadow-medium: var(--shadow-medium);
-$shadow-strong: var(--shadow-strong);
-$shadow-hover: var(--shadow-hover);
-$shadow-focus: var(--shadow-focus);
+$shadow-light: 0px 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0px 3px 6px rgba(0, 0, 0, 0.12);
+$shadow-strong: 0px 6px 12px rgba(0, 0, 0, 0.15);
+$shadow-hover: 0px 4px 8px rgba(0, 0, 0, 0.18);
+$shadow-focus: 0px 0px 2px 2px rgba(1, 110, 244, 0.3);

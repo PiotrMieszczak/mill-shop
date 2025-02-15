@@ -1,8 +1,10 @@
-@use 'variables';
+@use "variables";
+@use "sass:list";
+@use "sass:meta";
 
 $spacing-properties: (
   "m": margin,
-  "p": padding
+  "p": padding,
 );
 
 $spacing-directions: (
@@ -10,24 +12,33 @@ $spacing-directions: (
   "b": bottom,
   "l": left,
   "r": right,
-  "x": (left, right),
-  "y": (top, bottom)
+  "x": (
+    left,
+    right,
+  ),
+  "y": (
+    top,
+    bottom,
+  ),
 );
 
 @each $prefix, $property in $spacing-properties {
-  @each $size, $value in (
-    0: variables.$space-0,
-    1: variables.$space-1,
-    2: variables.$space-2,
-    3: variables.$space-3,
-    4: variables.$space-4,
-    5: variables.$space-5,
-    6: variables.$space-6,
-    7: variables.$space-7,
-    8: variables.$space-8,
-    9: variables.$space-9,
-    10: variables.$space-10
-  ) {
+  @each $size,
+    $value
+      in (
+        0: variables.$space-0,
+        1: variables.$space-1,
+        2: variables.$space-2,
+        3: variables.$space-3,
+        4: variables.$space-4,
+        5: variables.$space-5,
+        6: variables.$space-6,
+        7: variables.$space-7,
+        8: variables.$space-8,
+        9: variables.$space-9,
+        10: variables.$space-10
+      )
+  {
     /* All sides */
     .#{$prefix}-#{$size} {
       #{$property}: $value;
@@ -35,10 +46,10 @@ $spacing-directions: (
 
     /* Directional spacing */
     @each $dir, $prop in $spacing-directions {
-      @if type-of($prop) == list {
+      @if meta.type-of($prop) == list {
         .#{$prefix}-#{$dir}-#{$size} {
-          #{nth($prop, 1)}: $value;
-          #{nth($prop, 2)}: $value;
+          #{list.nth($prop, 1)}: $value;
+          #{list.nth($prop, 2)}: $value;
         }
       } @else {
         .#{$prefix}-#{$dir}-#{$size} {

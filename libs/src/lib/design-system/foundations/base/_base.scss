@@ -8,6 +8,7 @@
 @use "../border/variables" as *;
 @use "../grid/variables" as *;
 @use "../shadow/variables" as *;
+@use "../breakpoints/variables" as *;
 
 :root {
   --font-type-default: #{$font-type-default};
@@ -30,4 +31,79 @@
   --line-height-2: #{$line-height-2};
   --line-height-3: #{$line-height-3};
   --line-height-4: #{$line-height-4};
+
+  /* Spacing Variables */
+  --space-0: #{$space-0};
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-5: #{$space-5};
+  --space-6: #{$space-6};
+  --space-7: #{$space-7};
+  --space-8: #{$space-8};
+  --space-9: #{$space-9};
+  --space-10: #{$space-10};
+
+  /* Shadow Variables */
+  --shadow-light: #{$shadow-light};
+  --shadow-medium: #{$shadow-medium};
+  --shadow-strong: #{$shadow-strong};
+  --shadow-hover: #{$shadow-hover};
+  --shadow-focus: #{$shadow-focus};
+
+  /* Primary Colors */
+  --primary-1: #{$primary-1};
+  --primary-2: #{$primary-2};
+  --primary-3: #{$primary-3};
+  --primary-4: #{$primary-4};
+  --primary-5: #{$primary-5};
+  --primary-6: #{$primary-6};
+  --primary-7: #{$primary-7};
+
+  /* Secondary Colors */
+  --secondary-1: #{$secondary-1};
+  --secondary-2: #{$secondary-2};
+  --secondary-3: #{$secondary-3};
+  --secondary-4: #{$secondary-4};
+  --secondary-5: #{$secondary-5};
+  --secondary-6: #{$secondary-6};
+  --secondary-7: #{$secondary-7};
+
+  /* Neutral Colors */
+  --neutral-1: #{$neutral-1};
+  --neutral-2: #{$neutral-2};
+  --neutral-3: #{$neutral-3};
+  --neutral-4: #{$neutral-4};
+  --neutral-5: #{$neutral-5};
+  --neutral-6: #{$neutral-6};
+  --neutral-7: #{$neutral-7};
+  --neutral-8: #{$neutral-8};
+
+  /* Status Colors */
+  --success: #{$success};
+  --warning: #{$warning};
+  --error: #{$error};
+  --info: #{$info};
+
+  /* Border Colors */
+  --border-default: #{$border-default};
+  --border-hover: #{$border-hover};
+  --border-focus: #{$border-focus};
+  --border-active: #{$border-active};
+  --border-error: #{$border-error};
+  --border-disabled: #{$border-disabled};
+  --border-highlighted: #{$border-highlighted};
+
+  /* System Colors */
+  --system-default: #{$system-default};
+  --system-negative: #{$system-negative};
+  --system-background: #{$system-background};
+  --system-link: #{$system-link};
+
+  /* Breakpoint Variables */
+  --bp-mobile: #{$bp-mobile};
+  --bp-tablet: #{$bp-tablet};
+  --bp-desktop: #{$bp-desktop};
+  --bp-large: #{$bp-large};
 }
