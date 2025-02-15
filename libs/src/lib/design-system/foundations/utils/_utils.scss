@@ -1,0 +1,33 @@
+@use "../breakpoints/variables" as bp;
+@use "../breakpoints/mixins" as mixins;
+@use "../space/variables" as *;
+
+.lib-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 $space-2;
+  margin: 0 auto;
+
+  @include mixins.breakpoint-tablet {
+    max-width: bp.$bp-tablet;
+    padding-left: $space-3;
+    padding-right: $space-3;
+  }
+
+  @include mixins.breakpoint-desktop {
+    max-width: bp.$bp-desktop;
+    padding-left: $space-4;
+    padding-right: $space-4;
+  }
+
+  @include mixins.breakpoint-large {
+    max-width: bp.$bp-large;
+    padding-left: $space-5;
+    padding-right: $space-5;
+  }
+
+  &-fluid {
+    width: 100%;
+    padding: 0 $space-2;
+  }
+}
