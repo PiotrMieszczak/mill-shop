@@ -1,0 +1,12 @@
+html {
+  /* Font variant */
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+
+  /* Smoothing */
+  -moz-osx-font-smoothing: grayscale;
+  //font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}

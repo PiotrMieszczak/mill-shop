@@ -3,6 +3,7 @@ import { LinkType, LinkWeight } from './link';
 import { LibSize } from '../../types';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'a[libLink], button[libLink]',
   standalone: true,
   template: `

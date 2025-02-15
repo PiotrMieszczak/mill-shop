@@ -29,7 +29,7 @@
         ],
         "styles": ["apps/mill-shop/src/styles.scss"],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/src/lib/design-system/foundations"]
+          "includePaths": ["libs/src/lib/design-system"]
         },
         "scripts": []
       },

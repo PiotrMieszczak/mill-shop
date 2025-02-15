@@ -1,4 +1,5 @@
 import nx from '@nx/eslint-plugin';
+import angular from '@angular-eslint/eslint-plugin';
 
 export default [
   ...nx.configs['flat/base'],
@@ -26,17 +27,27 @@ export default [
     },
   },
   {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.cts',
-      '**/*.mts',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
-    // Override or add rules here
+    files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'],
+    plugins: {
+      '@angular-eslint': angular,
+    },
+    rules: {
+      ...angular.configs.recommended.rules,
+
+      // ✅ Add the component selector rule
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'app',
+          style: 'kebab-case',
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
+    // Override or add JavaScript-specific rules here
     rules: {},
   },
 ];

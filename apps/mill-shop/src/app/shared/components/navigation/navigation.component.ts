@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LinkComponent } from '@mill-shop/design-system';
+import { LinkComponent } from '@mill-shop/design-system/components';
 
 @Component({
   selector: 'app-navigation',

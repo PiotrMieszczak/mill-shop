@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mill-shop/design-system": ["libs/src/index.ts"]
+      "@mill-shop/design-system/*": ["libs/src/lib/design-system/*"]
     },
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "types": ["@commitlint/types"]
   },
   "exclude": ["node_modules", "tmp"]

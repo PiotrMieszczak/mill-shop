@@ -1,20 +1,21 @@
-@use './variables' as var;
+@use "./variables" as var;
+@use "sass:map";
 
 @mixin font($type, $breakpoint) {
-  font-size: map-get(map-get(var.$typography-scale, $type), $breakpoint, font-size);
-  line-height: map-get(map-get(var.$typography-scale, $type), $breakpoint, line-height);
+  font-size: map.get(map.get(var.$typography-scale, $type), $breakpoint, font-size);
+  line-height: map.get(map.get(var.$typography-scale, $type), $breakpoint, line-height);
 }
 
 @mixin typography($class-name, $type, $breakpoint) {
-    .#{$class-name} {
-        font-size: map-get(map-get(var.$typography-scale, $type), $breakpoint, font-size);
-        line-height: map-get(map-get(var.$typography-scale, $type), $breakpoint, line-height);
-    }
+  .#{$class-name} {
+    font-size: map.get(map.get(var.$typography-scale, $type), $breakpoint, font-size);
+    line-height: map.get(map.get(var.$typography-scale, $type), $breakpoint, line-height);
+  }
 }
 
 @mixin regular {
-  font-weight: var.$weight-regular;
+  font-weight: var.$font-weight-regular;
 }
 @mixin bold {
-  font-weight: var.$weight-bold;
+  font-weight: var.$font-weight-bold;
 }

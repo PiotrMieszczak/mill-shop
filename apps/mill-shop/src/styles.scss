@@ -1,7 +1,2 @@
-@use "variables" as *;
-@use "mixins" as *;
-@use "classes" as *;
-
-body {
-  font-family: $font-font-family;
-}
+// @use "@mill-shop/design-system/styles" as foundation;
+@use "../../../libs/src/lib/design-system/foundations" as foundation;

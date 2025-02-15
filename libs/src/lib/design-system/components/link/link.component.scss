@@ -37,10 +37,10 @@
   }
 
   &[data-weight="regular"] {
-    font-weight: font.$weight-regular;
+    font-weight: font.$font-weight-regular;
   }
 
   &[data-weight="bold"] {
-    font-weight: font.$weight-bold;
+    font-weight: font.$font-weight-bold;
   }
 }

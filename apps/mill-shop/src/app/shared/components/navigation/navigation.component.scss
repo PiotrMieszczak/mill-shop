@@ -1,9 +1,9 @@
-@use "../../../../../../../libs/src/lib/design-system/foundations/variables" as foundation;
-@use "../../../../../../../libs/src/lib/design-system/foundations/mixins" as mixins;
+// @use "@mill-shop/design-system/styles/foundations" as core;
+@use "../../../../../../../libs/src/lib/design-system/foundations" as core;
 
 .navbar {
   width: 100%;
-  padding: foundation.$space-4;
+  padding: core.$space-4;
   transition: all 0.3s ease;
   z-index: 1000;
   background-color: transparent;

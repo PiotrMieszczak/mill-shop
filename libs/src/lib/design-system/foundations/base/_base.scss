@@ -1,0 +1,33 @@
+@forward "resets/resets";
+@forward "html/html";
+@forward "typography/typography";
+
+@use "../typography/variables" as *;
+@use "../colors/variables" as *;
+@use "../space/variables" as *;
+@use "../border/variables" as *;
+@use "../grid/variables" as *;
+@use "../shadow/variables" as *;
+
+:root {
+  --font-type-default: #{$font-type-default};
+  --font-weight-regular: #{$font-weight-regular};
+  --font-weight-bold: #{$font-weight-bold};
+
+  --font-size-default: #{$font-size-default};
+  --font-size-1: #{$font-size-1};
+  --font-size-2: #{$font-size-2};
+  --font-size-3: #{$font-size-3};
+  --font-size-4: #{$font-size-4};
+  --font-size-5: #{$font-size-5};
+  --font-size-6: #{$font-size-6};
+  --font-size-7: #{$font-size-7};
+  --font-size-8: #{$font-size-8};
+  --font-size-9: #{$font-size-9};
+
+  /* Line Heights */
+  --line-height-1: #{$line-height-1};
+  --line-height-2: #{$line-height-2};
+  --line-height-3: #{$line-height-3};
+  --line-height-4: #{$line-height-4};
+}
