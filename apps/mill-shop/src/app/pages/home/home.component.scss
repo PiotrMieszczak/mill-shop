@@ -25,3 +25,21 @@
     @include core.font(h1, desktop);
   }
 }
+
+.top-category-container {
+  margin-top: core.$space-6;
+
+  .header {
+    @include core.font(title2, mobile);
+
+    @include core.breakpoint-up(core.$bp-bp-desktop) {
+      @include core.font(title2, desktop);
+    }
+  }
+
+  .top-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

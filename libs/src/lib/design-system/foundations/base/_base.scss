@@ -5,7 +5,7 @@
 @use "../typography/variables" as *;
 @use "../colors/variables" as *;
 @use "../space/variables" as *;
-@use "../border/variables" as *;
+@use "../border/variables" as border;
 @use "../grid/variables" as *;
 @use "../shadow/variables" as *;
 @use "../breakpoints/variables" as *;
@@ -88,13 +88,13 @@
   --info: #{$info};
 
   /* Border Colors */
-  --border-default: #{$border-default};
-  --border-hover: #{$border-hover};
-  --border-focus: #{$border-focus};
-  --border-active: #{$border-active};
-  --border-error: #{$border-error};
-  --border-disabled: #{$border-disabled};
-  --border-highlighted: #{$border-highlighted};
+  --border-default: #{border.$border-default};
+  --border-hover: #{border.$border-hover};
+  --border-focus: #{border.$border-focus};
+  --border-active: #{border.$border-active};
+  --border-error: #{border.$border-error};
+  --border-disabled: #{border.$border-disabled};
+  --border-highlighted: #{border.$border-highlighted};
 
   /* System Colors */
   --system-default: #{$system-default};

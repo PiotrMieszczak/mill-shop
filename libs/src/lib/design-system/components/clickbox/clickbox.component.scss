@@ -1,6 +1,6 @@
 @use "../../foundations/border/variables" as border;
 @use "../../foundations/colors/variables" as color;
-@use "../../foundations/mixins" as *;
+@use "../../foundations/mixins" as mixins;
 @use "../../foundations/shadow/variables" as shadow;
 
 :host {
@@ -11,19 +11,19 @@
   background-color: color.$system-background;
   cursor: pointer;
 
-  @include border(border.$border--default, shadow.$shadow-light);
+  @include mixins.border(border.$border-default, shadow.$shadow-light);
 }
 
 :host(.hovered) {
-  @include border(border.$border--hover, shadow.$shadow-medium);
+  @include mixins.border(border.$border-hover, shadow.$shadow-medium);
 }
 
 :host(.clicked) {
-  @include border(border.$border--active, shadow.$shadow-strong);
+  @include mixins.border(border.$border-active, shadow.$shadow-strong);
 }
 
 :host(.disabled) {
   cursor: not-allowed;
   opacity: 0.6;
-  @include border(border.$border--disabled, shadow.$shadow-light);
+  @include mixins.border(border.$border-disabled, shadow.$shadow-light);
 }
