@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
 import { HomeFacadeService } from '../../domain/home/facade';
-import { ClickboxComponent, LinkComponent } from '@mill-shop/design-system/components';
+import { LinkComponent } from '@mill-shop/design-system/components';
 import { Router, RouterModule } from '@angular/router';
+import { CategoryCardComponent } from '../../shared/components/category-card/category-card.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [LinkComponent, ClickboxComponent, RouterModule],
+  imports: [LinkComponent, RouterModule, CategoryCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {

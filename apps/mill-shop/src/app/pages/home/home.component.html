@@ -6,16 +6,12 @@
     <div class="header">Top categories</div>
     <a libLink size="medium" routerLink="/categories">Show all</a>
   </div>
-  <div class="grid">
+  <div class="top-categories grid">
     @for ( category of topCategoriesSignal(); track category.slug; let index = $index) {
-    <lib-clickbox
-      [isLoading]="topLoadingSignal()"
-      class="category {{ categoryClasses(index) }}"
-      (click)="onCategorySelection(category.slug)">
-      <img src="{{ getCategoryBackgroundImage(category.slug) }}" [alt]="category.name" class="category-image" />
-      "
-      <div class="category-name">{{ category.name }}</div>
-    </lib-clickbox>
+    <app-category-card
+      [categorySignal]="category"
+      [isLoadingSignal]="loadingSignal()"
+      class="category-box {{ categoryClasses(index) }}"></app-category-card>
     }
   </div>
 </section>
