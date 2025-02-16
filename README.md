@@ -12,10 +12,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-  
-Project using Angular 19, Nx, Apollo GraphQL, Hygraph CSM for content managment and custom design system library.
+Stack
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+- Angular 19, 
+- Nx, 
+- Apollo GraphQL,
+- Hygraph CSM for content managment,
+- custom design system library.
 
 ### Run App
 
