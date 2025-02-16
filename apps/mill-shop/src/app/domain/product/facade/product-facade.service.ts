@@ -64,7 +64,6 @@ export class ProductFacadeService {
   }
 
   getProductDetails(categorySlug: string, productSlug: string): void {
-    console.log('categorySlug', categorySlug);
     this.categorySlug.set(categorySlug);
     this.productSlug.set(productSlug);
   }

@@ -1,4 +1,5 @@
 <lib-clickbox [isLoading]="isLoadingSignal()" class="category" (click)="onClick()">
   <img [src]="backgroundImageSignal()" [alt]="categorySignal()?.name" class="category-image" />
   <div class="category-name">{{ categorySignal()?.name }}</div>
+  <div class="category-product-count">Check {{ categorySignal()?.productCount }} products</div>
 </lib-clickbox>

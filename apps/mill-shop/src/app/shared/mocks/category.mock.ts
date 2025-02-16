@@ -6,11 +6,13 @@ export const mockCategoryDTO: CategoryDTO[] = [
     slug: 'electronics',
     name: 'Electronics',
     image: { url: 'image-url-1', fileName: 'image1.jpg' },
+    product: [{ slug: 'slug1' }],
   },
   {
     id: 2,
     slug: 'books',
     name: 'Books',
     image: { url: 'image-url-2', fileName: 'image2.jpg' },
+    product: [{ slug: 'slug1' }],
   },
 ];

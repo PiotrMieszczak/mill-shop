@@ -6,5 +6,5 @@ export interface Product {
   description: string;
   price: number;
   image: Image;
-  category: Omit<Category, 'image'>;
+  category: Omit<Category, 'image' | 'productCount'>;
 }

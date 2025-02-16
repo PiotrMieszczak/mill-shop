@@ -5,4 +5,5 @@ export interface CategoryDTO {
   slug: string;
   name: string;
   image: ImageDTO;
+  product: { slug: string }[];
 }

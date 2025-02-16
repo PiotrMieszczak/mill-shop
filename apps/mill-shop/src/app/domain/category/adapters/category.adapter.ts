@@ -8,6 +8,7 @@ export class CategoryAdapter {
       name: categoryDTO.name,
       slug: categoryDTO.slug,
       image: ImageAdapter.createImage(categoryDTO.image),
+      productCount: categoryDTO.product ? categoryDTO.product.length : 0,
     };
   }
 }
