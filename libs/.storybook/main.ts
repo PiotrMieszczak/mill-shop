@@ -31,7 +31,7 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (webpackConfig) => {
     if (webpackConfig.module && webpackConfig.module.rules) {
-      webpackConfig.module.rules = webpackConfig.module.rules.filter(rule => {
+      webpackConfig.module.rules = webpackConfig.module.rules.filter((rule) => {
         if (typeof rule !== 'string' && rule && 'type' in rule && rule.test) {
           if (rule.type === 'javascript/auto' && rule.test.toString() === /\.m?js$/.toString()) {
             return false;

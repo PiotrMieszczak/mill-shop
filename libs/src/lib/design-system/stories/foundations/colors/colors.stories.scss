@@ -1,57 +1,56 @@
-@use '../../../foundations/variables.scss' as foundation;
-@use '../../../foundations/mixins.scss' as mixins;
+@use "../../../foundations/variables.scss" as foundation;
+@use "../../../foundations/mixins.scss" as mixins;
+@use "../../../foundations" as core;
 
 .colors-palette {
   background-color: foundation.$color-system-default;
   padding: foundation.$space-6;
 
-  
-h1 {
-  @include mixins.font(h1, mobile);
-  color: foundation.$color-system-negative;
-}
+  h1 {
+    @include mixins.font(h1, mobile);
+    color: foundation.$color-system-negative;
+  }
 
-h2 {
-  @include mixins.font(h2, mobile);
-   color: foundation.$color-system-negative;
-}
+  h2 {
+    @include mixins.font(h2, mobile);
+    color: foundation.$color-system-negative;
+  }
 
-.color-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: foundation.$space-3;
-  margin-bottom: foundation.$space-6;
-}
+  .color-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: foundation.$space-3;
+    margin-bottom: foundation.$space-6;
+  }
 
-.color-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+  .color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.color-box {
-  width: 200px;
-  height: 200px;
-  border: 1px solid foundation.$color-system-negative;
-  border-radius: 1px;
-}
+  .color-box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid foundation.$color-system-negative;
+    border-radius: 1px;
+  }
 
-.color-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: foundation.$space-1;
-}
+  .color-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: foundation.$space-1;
+  }
 
-.color-label {
-  @include mixins.font(body1, desktop);
-  color: foundation.$color-system-negative;
-}
+  .color-label {
+    @include mixins.font(body1, desktop);
+    color: foundation.$color-system-negative;
+  }
 
-.color-value,
-.color-class {
-  @include mixins.font(body2, desktop);
-  color: foundation.$color-neutral-3;
-}
-
+  .color-value,
+  .color-class {
+    @include mixins.font(body2, desktop);
+    color: foundation.$color-neutral-3;
+  }
 }
