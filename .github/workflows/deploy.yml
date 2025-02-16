@@ -87,11 +87,12 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Build Storybook
-        run: npx nx run design-system:build-storybook --outputPath=dist/storybook/design-system
+        run: npx nx run design-system:build-storybook
 
       - name: Deploy Storybook to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.GH_TOKEN }}
           branch: gh-pages
           folder: dist/storybook/design-system
           target-folder: storybook
