@@ -3,13 +3,14 @@ import { HomeFacadeService } from '../../domain/home/facade';
 import { LinkComponent } from '@mill-shop/design-system/components';
 import { Router, RouterModule } from '@angular/router';
 import { CategoryCardComponent } from '../../shared/components/category-card/category-card.component';
+import { LoaderComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [LinkComponent, RouterModule, CategoryCardComponent],
+  imports: [LinkComponent, RouterModule, CategoryCardComponent, LoaderComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {

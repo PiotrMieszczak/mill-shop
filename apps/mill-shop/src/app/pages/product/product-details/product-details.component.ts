@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
 import { CountdownTimerComponent } from './components/countdown-timer.component';
-import { ProductCardComponent } from '../../../shared/components';
+import { LoaderComponent, ProductCardComponent } from '../../../shared/components';
 import { ButtonComponent } from '@mill-shop/design-system/components';
 import { CurrencyPipe } from '@angular/common';
 import { BreakpointService } from '../../../shared/services';
@@ -18,6 +18,7 @@ import { BreakpointService } from '../../../shared/services';
     ProductCardComponent,
     ButtonComponent,
     CurrencyPipe,
+    LoaderComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

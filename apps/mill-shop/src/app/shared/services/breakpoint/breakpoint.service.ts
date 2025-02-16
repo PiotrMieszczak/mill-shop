@@ -25,7 +25,6 @@ export class BreakpointService {
         for (const [key, query] of Object.entries(CUSTOM_BREAKPOINTS)) {
           if (result.breakpoints[query]) {
             this.currentBreakpoint.set(key);
-            console.log(key);
             break;
           }
         }

@@ -14,6 +14,10 @@
 
 .price-wrapper {
   padding: core.$space-4;
+  display: flex;
+  flex-direction: column;
+  gap: core.$space-4;
+
   @include core.border(core.$border-border-default);
 
   .price {
