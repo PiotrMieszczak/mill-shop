@@ -1,7 +1,8 @@
-@use "../../../../../../../libs/src/lib/design-system/foundations" as core;
+@use "../../../../../../../libs/src/lib/design-system/foundations/variables" as variables;
+@use "../../../../../../../libs/src/lib/design-system/foundations/mixins" as mixins;
 
 .title {
-  @include core.font(title2, desktop);
+  @include mixins.font(title2, desktop);
 }
 .product-image {
   height: 30dvh;
@@ -9,20 +10,20 @@
 }
 
 .product-description {
-  @include core.font(body1, desktop);
+  @include mixins.font(body1, desktop);
 }
 
 .price-wrapper {
-  padding: core.$space-4;
+  padding: variables.$space-4;
   display: flex;
   flex-direction: column;
-  gap: core.$space-4;
+  gap: variables.$space-4;
 
-  @include core.border(core.$border-border-default);
+  @include mixins.border(variables.$border-border-default);
 
   .price {
     color: #d00000; // TODO add to designs system
-    @include core.font(price1, desktop);
+    @include mixins.font(price1, desktop);
   }
 
   &--mobile {
@@ -30,9 +31,9 @@
     bottom: 0;
     width: 100%;
     height: 150px;
-    background-color: core.$color-system-negative;
+    background-color: variables.$color-system-negative;
     z-index: 1000;
-    box-shadow: core.$shadow-shadow-strong;
+    box-shadow: variables.$shadow-shadow-strong;
 
     .price-container {
       display: flex;
@@ -47,18 +48,18 @@
 
     .price {
       color: #d00000; // TODO add to designs system
-      @include core.font(price1, mobile);
+      @include mixins.font(price1, mobile);
     }
   }
 }
 
 .related-products-wrapper {
   .header {
-    margin: core.$space-4 0;
-    @include core.font(title2, mobile);
+    margin: variables.$space-4 0;
+    @include mixins.font(title2, mobile);
 
-    @include core.breakpoint-up(core.$bp-bp-desktop) {
-      @include core.font(title2, desktop);
+    @include mixins.breakpoint-up(variables.$bp-bp-desktop) {
+      @include mixins.font(title2, desktop);
     }
   }
 

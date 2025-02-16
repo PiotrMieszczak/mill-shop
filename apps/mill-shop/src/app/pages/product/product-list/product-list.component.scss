@@ -1,12 +1,13 @@
-@use "../../../../../../../libs/src/lib/design-system/foundations" as core;
+@use "../../../../../../../libs/src/lib/design-system/foundations/variables" as variables;
+@use "../../../../../../../libs/src/lib/design-system/foundations/mixins" as mixins;
 
 .title {
-  font-weight: core.$font-font-weight-bold;
-  margin: core.$space-4 0;
+  font-weight: variables.$font-font-weight-bold;
+  margin: variables.$space-4 0;
 
-  @include core.font(title2, mobile);
+  @include mixins.font(title2, mobile);
 
-  @include core.breakpoint-up(core.$bp-bp-desktop) {
-    @include core.font(title2, desktop);
+  @include mixins.breakpoint-up(variables.$bp-bp-desktop) {
+    @include mixins.font(title2, desktop);
   }
 }

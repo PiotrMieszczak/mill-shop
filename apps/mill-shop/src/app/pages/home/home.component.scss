@@ -1,4 +1,5 @@
-@use "../../../../../../libs/src/lib/design-system/foundations" as core;
+@use "../../../../../../libs/src/lib/design-system/foundations/variables" as variables;
+@use "../../../../../../libs/src/lib/design-system/foundations/mixins" as mixins;
 
 .banner-container {
   max-width: 100dvw;
@@ -16,34 +17,34 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   text-align: left;
-  color: core.$color-system-negative;
-  padding: core.$space-3 core.$space-5;
+  color: variables.$color-system-negative;
+  padding: variables.$space-3 variables.$space-5;
 
-  @include core.font(h1, mobile);
+  @include mixins.font(h1, mobile);
 
-  @include core.breakpoint-up(core.$bp-bp-desktop) {
-    @include core.font(h1, desktop);
+  @include mixins.breakpoint-up(variables.$bp-bp-desktop) {
+    @include mixins.font(h1, desktop);
   }
 }
 
 .top-category-container {
   .header {
-    @include core.font(title2, mobile);
+    @include mixins.font(title2, mobile);
 
-    @include core.breakpoint-up(core.$bp-bp-desktop) {
-      @include core.font(title2, desktop);
+    @include mixins.breakpoint-up(variables.$bp-bp-desktop) {
+      @include mixins.font(title2, desktop);
     }
   }
 
   .top-category {
-    margin: core.$space-6 0;
+    margin: variables.$space-6 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .top-categories {
-    margin-bottom: core.$space-6;
+    margin-bottom: variables.$space-6;
     .category-box {
       height: 30dvh;
     }

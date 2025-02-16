@@ -1,18 +1,18 @@
-@use "../../../../../../../libs/src/lib/design-system/foundations" as core;
+@use "../../../../../../../libs/src/lib/design-system/foundations/variables" as variables;
 
 .navbar {
   width: 100%;
-  padding: core.$space-4;
+  padding: variables.$space-4;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   z-index: 1000;
-  background-color: core.$color-system-negative;
-  box-shadow: core.$shadow-shadow-strong;
+  background-color: variables.$color-system-negative;
+  box-shadow: variables.$shadow-shadow-strong;
 
   &.scrolled {
     position: fixed;
     top: 0;
-    padding: core.$space-2;
-    box-shadow: core.$shadow-shadow-medium;
+    padding: variables.$space-2;
+    box-shadow: variables.$shadow-shadow-medium;
   }
 }
 
@@ -36,5 +36,5 @@
 
 .navbar-right {
   display: flex;
-  gap: core.$space-4;
+  gap: variables.$space-4;
 }
