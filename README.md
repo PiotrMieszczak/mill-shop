@@ -1,50 +1,58 @@
-<div id="top"></div>
+# 🛍️ **Mill Shop**
 
-<!-- PROJECT LOGO -->
-<br />
-  <h3 align="center">Shop demo</h3>
+🚀 **Live Demos:**  
+- 🖥️ **[App Demo](https://piotrmieszczak.github.io/mill-shop/)**  
+- 📖 **[Storybook Demo](https://piotrmieszczak.github.io/mill-shop/storybook/)**  
 
-  <p align="center">
-   
-  </p>
-</div>
+---
 
+## 📌 **Stack & Technologies**
+The project is built using the following technologies:
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-Stack
+- ⚡ **Angular 19** — Modern frontend framework  
+- 📂 **Nx** — Monorepo management and tooling  
+- 🔗 **Apollo GraphQL** — Efficient API communication  
+- 📊 **Hygraph CMS** — Content management system for structured data  
+- 🎨 **Custom Design System Library**  
+- 📚 **Storybook** — UI component documentation & testing  
 
-- Angular 19, 
-- Nx, 
-- Apollo GraphQL,
-- Hygraph CSM for content managment,
-- custom design system library.
+---
 
-### Run App
+## 🛠️ **Getting Started**
 
-To run the dev server for your app, use:
-
+### 🚀 **Run the App**
+To start the **development server**, use:
 ```sh
-npx run mill-shop:serve:development
+npx nx run mill-shop:serve:development
 ```
-
+To run **unit tests**:
 ```sh
 nx run-many --target=test
 ```
 
-### Run Storybook
-
-To run the dev server for your app, use:
-
+### 🎨 **Run Storybook**
+To start **Storybook** for UI component development:
 ```sh
-npx nx run design-system:storybook 
+npx nx run design-system:storybook
 ```
 
-## Roadmap
-- [ ] Add automatic generation of changelog
-- [ ] Fix scss files import inside storybook (angular component can't be imported)
-- [ ] Investigate Hygraph CMS and query for related products entities to category
-- [ ] Add error component
-- [ ] Improve way of consuming UI library. Maybe publish?
-- [ ] Improve unit tests
-- [ ] Add e2e tests
+---
+
+## 🛣️ **Roadmap & Upcoming Features**
+✅ **Planned Improvements & Features**  
+
+- [ ] 📜 **Automate Changelog Generation**  
+- [ ] 🎨 **Fix SCSS Imports in Storybook** *(Angular components not importing correctly)*  
+- [ ] 🔍 **Improve Hygraph CMS Querying** *(Fetch related products in categories)*  
+- [ ] ⚠️ **Add Global Error Component**  
+- [ ] 🧪 **Enhance Unit Tests** *(Improve coverage & test reliability)*  
+- [ ] 🛡️ **Add End-to-End (e2e) Tests**  
+
+---
+
+### 🎯 **Contributions & Feedback**
+🛠️ **Want to contribute?** Fork the repo, submit a PR, and let's build something awesome!  
+📩 Have ideas? Feel free to open an issue or reach out.
+
+---
+
