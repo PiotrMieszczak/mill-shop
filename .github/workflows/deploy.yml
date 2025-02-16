@@ -5,37 +5,37 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write # ✅ Required for deploying to gh-pages
+
 jobs:
-  install-dependencies:
+  setup:
     runs-on: ubuntu-latest
     outputs:
-      cache-key: ${{ steps.cache-deps.outputs.cache-hit }}
+      cache-key: ${{ steps.cache-key.outputs.key }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
 
       - name: Cache Dependencies
-        id: cache-deps
+        id: cache-key
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: npm ci
 
   test:
     runs-on: ubuntu-latest
-    needs: install-dependencies
+    needs: setup
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -43,15 +43,15 @@ jobs:
       - name: Restore Cached Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: npm-${{ needs.setup.outputs.cache-key }}
 
       - name: Run Tests
         run: npx nx run-many --target=test --all --configuration=ci
 
   build-mill-shop:
     runs-on: ubuntu-latest
-    needs: [install-dependencies, test]
+    needs: [setup, test]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -59,23 +59,24 @@ jobs:
       - name: Restore Cached Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: npm-${{ needs.setup.outputs.cache-key }}
 
       - name: Build Angular App
-        run: npx nx build mill-shop --configuration=production --outputPath=dist/mill-shop
+        run: npx nx build mill-shop --configuration=production
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy Angular App to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}
           branch: gh-pages
-          folder: dist/mill-shop
-          clean: true
+          folder: dist/apps/mill-shop
+          target-folder: .
+          token: ${{ secrets.GH_TOKEN }}
+          clean: false
 
   build-storybook:
     runs-on: ubuntu-latest
-    needs: [install-dependencies, test]
+    needs: [setup, test]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -83,8 +84,8 @@ jobs:
       - name: Restore Cached Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: npm-${{ needs.setup.outputs.cache-key }}
 
       - name: Build Storybook
         run: npx nx run design-system:build-storybook
@@ -92,8 +93,8 @@ jobs:
       - name: Deploy Storybook to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}
           branch: gh-pages
           folder: dist/storybook/design-system
           target-folder: storybook
-          clean: true
+          token: ${{ secrets.GH_TOKEN }}
+          clean: false
