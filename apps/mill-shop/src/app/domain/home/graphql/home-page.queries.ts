@@ -24,6 +24,9 @@ export const GET_TOP_CATEGORIES = gql`
         url
         fileName
       }
+      product {
+        slug
+      }
     }
   }
 `;

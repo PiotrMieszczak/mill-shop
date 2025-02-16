@@ -11,11 +11,7 @@ export class ProductFacadeService {
   private productSlug = signal<string>('');
 
   productsSignal = computed(() => this.productsResource.value() || []);
-  categorySignal = computed(() =>
-    this.productsSignal() && this.productsSignal().length
-      ? this.productsSignal().shift()?.category
-      : null,
-  );
+  categorySignal = computed(() => this.productsSignal().slice(0, 1)[0]?.category || null);
   productDetailsSignal = computed(() => this.productDetailsResource.value());
   relatedProductsSignal = computed(() => this.relatedProductsResource.value() || []);
   isLoadingSignal = computed(

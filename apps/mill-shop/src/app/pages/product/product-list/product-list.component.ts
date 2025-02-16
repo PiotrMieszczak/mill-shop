@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductFacadeService } from '../../../domain/product/facade';
 import { ProductCardComponent } from '../../../shared/components';
@@ -21,6 +21,9 @@ export class ProductListComponent implements OnInit {
   errorSignal = this.productFacade.hasErrorSignal;
   categorySignal = this.productFacade.categorySignal;
 
+  superEffect = effect(() => {
+    console.log('productsSignal', this.productsSignal());
+  });
   ngOnInit(): void {
     this.categorySlug.set(this.activeRouter.snapshot.paramMap.get('slug') ?? '');
     this.productFacade.getProductsByCategory(this.categorySlug());

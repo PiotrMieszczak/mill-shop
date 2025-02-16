@@ -4,6 +4,7 @@ import { Product } from '../interfaces';
 
 export class ProductAdapter {
   public static createProduct(productDTO: ProductDTO): Product {
+    console.log('createProduct productDTO', productDTO);
     return {
       name: productDTO.name,
       slug: productDTO.slug,
