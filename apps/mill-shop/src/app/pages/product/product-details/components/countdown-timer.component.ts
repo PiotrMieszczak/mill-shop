@@ -7,7 +7,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { interval, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-countdown-timer',
@@ -37,6 +37,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   private startCountdown(): void {
     interval(1000)
       .pipe(
+        startWith(0),
         map(() => this.calculateTimeUntilMidnight()),
         takeUntil(this.destroy$),
       )
