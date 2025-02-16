@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { GraphqlService } from '../../../shared/services/graphql.service';
+import { GraphqlService } from '../../../shared/services/graphql/graphql.service';
 import { map, Observable } from 'rxjs';
 import { GET_HOME_PAGE, GET_TOP_CATEGORIES } from '../graphql/home-page.queries';
 import { HomePage } from '../interfaces';

@@ -5,6 +5,7 @@ import { CountdownTimerComponent } from './components/countdown-timer.component'
 import { ProductCardComponent } from '../../../shared/components';
 import { ButtonComponent } from '@mill-shop/design-system/components';
 import { CurrencyPipe } from '@angular/common';
+import { BreakpointService } from '../../../shared/services';
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +24,7 @@ import { CurrencyPipe } from '@angular/common';
 export class ProductDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private facade = inject(ProductFacadeService);
+  private bpService = inject(BreakpointService);
 
   categorySlug = signal('');
   productSlug = signal('');
@@ -33,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   relatedProductsSignal = this.facade.relatedProductsSignal;
   relatedProductsLoadingSignal = this.facade.relatedProductsLoadingSignal;
   relatedProductsErrorSignal = this.facade.relatedProductsErrorSignal;
+  isDesktopSignal = this.bpService.isDesktop;
   ngOnInit(): void {
     this.categorySlug.set(this.route.snapshot.paramMap.get('categorySlug') ?? '');
     this.productSlug.set(this.route.snapshot.paramMap.get('productSlug') ?? '');

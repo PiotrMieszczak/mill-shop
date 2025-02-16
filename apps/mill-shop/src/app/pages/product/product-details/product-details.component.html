@@ -1,6 +1,6 @@
 <div class="lib-container">
+  <h2 class="title">{{ productDetailsSignal()?.name }}</h2>
   <div class="grid p-t-7">
-    <h2 class="title col-m-4 col-d-12">{{ productDetailsSignal()?.name }}</h2>
     <img
       [src]="productDetailsSignal()?.image?.url"
       alt="{{ productDetailsSignal()?.image?.fileName }}"
@@ -8,14 +8,17 @@
     <div class="product-description col-m-2 col-d-4">
       <div>{{ productDetailsSignal()?.description }}</div>
     </div>
+
+    @if(isDesktopSignal()) {
     <div class="price-wrapper col-m-2 col-d-4">
       <div class="price">{{ productDetailsSignal()?.price | currency : 'EUR' }}</div>
       <app-countdown-timer class="countdown-timer" />
       <lib-button size="large" class="buy-button">Buy now</lib-button>
     </div>
+    }
   </div>
 
-  <section class="related-products-wrapper">
+  <section class="related-products-wrapper" [class.related-products-wrapper--mobile]="!isDesktopSignal()">
     <div class="header col-m-4 col-d-12">Related products</div>
     <div class="grid p-b-4">
       @for (product of relatedProductsSignal(); track product.slug; let index = $index) {
@@ -23,8 +26,19 @@
         [productSignal]="product"
         [categorySlug]="categorySlug()"
         [isLoadingSignal]="relatedProductsLoadingSignal()"
-        class="product-card col-m-2 col-d-4" />
+        class="product-card col-m-2 col-d-3" />
       }
     </div>
   </section>
 </div>
+@if(!isDesktopSignal()) {
+<div class="price-wrapper price-wrapper--mobile">
+  <div class="lib-container price-container">
+    <div class="price-content">
+      <div class="price">{{ productDetailsSignal()?.price | currency : 'EUR' }}</div>
+      <lib-button size="medium" class="buy-button">Buy now</lib-button>
+    </div>
+    <app-countdown-timer class="countdown-timer" />
+  </div>
+</div>
+}

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ProductApiService } from './product-api.service';
-import { GraphqlService } from '../../../shared/services/graphql.service';
+import { GraphqlService } from '../../../shared/services/graphql/graphql.service';
 import { GET_PRODUCT_DETAILS, GET_PRODUCTS_BY_CATEGORY } from '../graphql/product.queries';
 import { ProductAdapter } from '../adapters';
 import { Product } from '../interfaces';

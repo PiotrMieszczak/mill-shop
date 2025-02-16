@@ -5,6 +5,7 @@
 }
 .product-image {
   height: 20dvh;
+  width: 100%;
 }
 
 .product-description {
@@ -19,6 +20,32 @@
     color: #d00000; // TODO add to designs system
     @include core.font(price1, desktop);
   }
+
+  &--mobile {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: core.$color-system-negative;
+    z-index: 1000;
+    box-shadow: core.$shadow-shadow-strong;
+
+    .price-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 64px;
+    }
+
+    &::before {
+      box-shadow: none;
+    }
+
+    .price {
+      color: #d00000; // TODO add to designs system
+      @include core.font(price1, mobile);
+    }
+  }
 }
 
 .related-products-wrapper {
@@ -29,5 +56,9 @@
     @include core.breakpoint-up(core.$bp-bp-desktop) {
       @include core.font(title2, desktop);
     }
+  }
+
+  &--mobile {
+    margin-bottom: 150px;
   }
 }

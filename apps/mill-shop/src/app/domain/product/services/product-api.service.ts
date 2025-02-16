@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GraphqlService } from '../../../shared/services/graphql.service';
+import { GraphqlService } from '../../../shared/services/graphql/graphql.service';
 import {
   GET_PRODUCT_DETAILS,
   GET_PRODUCTS_BY_CATEGORY,

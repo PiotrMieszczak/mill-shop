@@ -6,15 +6,23 @@
 }
 
 .timer-header {
-  @include mixins.font(body1, desktop);
+  @include mixins.font(body1, mobile);
   text-align: left;
+
+  @include mixins.breakpoint-up(foundation.$bp-bp-desktop) {
+    @include mixins.font(body1, desktop);
+  }
 }
 
 .timer-display {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  @include mixins.font(body2, desktop);
+  @include mixins.font(body2, mobile);
+
+  @include mixins.breakpoint-up(foundation.$bp-bp-desktop) {
+    @include mixins.font(body2, desktop);
+  }
 }
 
 .time-box {
@@ -26,14 +34,22 @@
   text-align: center;
   width: 30%;
 
-  font-size: foundation.$font-font-size-7;
+  font-size: foundation.$font-font-size-5;
   box-shadow: foundation.$shadow-shadow-strong;
+
+  @include mixins.breakpoint-up(foundation.$bp-bp-desktop) {
+    font-size: foundation.$font-font-size-7;
+  }
 }
 
 small {
   display: block;
   margin-top: foundation.$space-1;
-  @include mixins.font(body2, desktop);
+  @include mixins.font(body1, mobile);
+
+  @include mixins.breakpoint-up(foundation.$bp-bp-desktop) {
+    @include mixins.font(body1, desktop);
+  }
 }
 
 .separator {

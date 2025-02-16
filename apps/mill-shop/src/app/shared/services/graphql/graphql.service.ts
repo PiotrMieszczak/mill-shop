@@ -10,7 +10,7 @@ export class GraphqlService {
 
   query<T, V extends OperationVariables = OperationVariables>(
     query: DocumentNode,
-    variables?: V
+    variables?: V,
   ): Observable<T> {
     return this.apollo
       .watchQuery<T, V>({ query, variables } as WatchQueryOptions<V, T>)
